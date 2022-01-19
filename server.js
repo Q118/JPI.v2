@@ -26,7 +26,6 @@ app.get('/postTicket', (req, res) => {
 })
 
 app.post('/postTicket', (req, res) => {
-    console.log(req.body.name)
     const name = req.body.name;
     const email = req.body.email;
     const phone = req.body.phone;
@@ -34,19 +33,21 @@ app.post('/postTicket', (req, res) => {
     const classSelect = req.body.class;
     const priorAttendance = req.body.priorAttendance;
 
-console.log(`name: ${name}`);
-console.log(`email: ${email}`);
-console.log(`phone: ${phone}`);
-console.log(`cu: ${cu}`);
-console.log(`class: ${classSelect}`);
+    console.log(`name: ${name}`);
+    console.log(`email: ${email}`);
+    console.log(`phone: ${phone}`);
+    console.log(`cu: ${cu}`);
+    console.log(`class: ${classSelect}`);
+    console.log(`priorAttendance: ${priorAttendance}`);
 
     fetch('http://jira.corelationinc.com/rest/api/2/issue/', {
         method: 'POST',
         headers: {
+            'Accept': 'application/json, text/plain, */*',
             'Content-Type': 'application/json',
             'Authorization': 'Basic c3JvdGhtYW46UmF0dDNhdHQh',
         },
-        body: {
+        body: JSON.stringify({
             "fields": {
                 "project":
                 {
@@ -61,7 +62,7 @@ console.log(`class: ${classSelect}`);
                     "name": "Basic Functionality"
                 }
             }
-        }
+        })
     })
         .then(response => {
             res.send(response.json());

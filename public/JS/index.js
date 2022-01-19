@@ -11,7 +11,7 @@ $(() => {
     const phoneInput = $("input#phone-input");
     const cuInput = $("input#cu-input");
     const classSelect = $("select#class-select");
-    const priorAttendance = $("input#priorAttendance-select");
+    const priorAttendance = $("select#priorAttendance-select");
 
     const personInfo = [nameInput, emailInput, phoneInput, cuInput, classSelect, priorAttendance];
 
