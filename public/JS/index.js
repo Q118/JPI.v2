@@ -12,9 +12,14 @@ $(() => {
     const cuInput = $("input#cu-input");
     const classSelect = $("select#class-select");
     const priorAttendance = $("select#priorAttendance-select");
-
+    //this info is *required* and the user cannot continue without filling them out
     const personInfo = [nameInput, emailInput, phoneInput, cuInput, classSelect, priorAttendance];
 
+    //supervisor info
+    const supervisorNameInput = $("input#supervisor-name-input");
+    const supervisorEmailInput = $("input#supervisor-email-input");
+    const supervisorPhoneInput = $("input#supervisor-phone-input");
+    // const supervisorInfo = [supervisorNameInput, supervisorEmailInput, supervisorPhoneInput];
 
     questionForm.on("submit", function (event) {
         event.preventDefault();
@@ -31,7 +36,10 @@ $(() => {
                     phone: phoneInput.val(),
                     cu: cuInput.val(),
                     class: classSelect.val(),
-                    priorAttendance: priorAttendance.val()
+                    priorAttendance: priorAttendance.val(),
+                    supervisorName: supervisorNameInput.val() === "" ? "none provided" : supervisorNameInput.val(),
+                    supervisorEmail: supervisorEmailInput.val() === "" ? "none provided" : supervisorEmailInput.val(),
+                    supervisorPhone: supervisorPhoneInput.val() === "" ? "none provided" : supervisorPhoneInput.val()
                 },
                 success: () => {
                     console.log('Sent to server-side');

@@ -4,15 +4,17 @@ const path = require('path');
 const app = express();
 const port = 8020;
 const cors = require('cors');
-// const XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
 const fetch = require('node-fetch');
-// import { fetch } from 'node-fetch';
-
 // Serve static content for the app from the "public" directory 
 app.use(express.static("public"));
 // Parse application body
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+
+
+//todo: change logic in postTicket route to have title be the title of the class (+only creating ticket if one not exist already) and description hold the name and info in a row of a table
+// if ticket exists, then update ticket with new info
+//todo add in  description to 'see comments for registers details'
 
 
 app.use(cors());
@@ -24,6 +26,13 @@ app.get("/", (req, res) => {
 app.get('/postTicket', (req, res) => {
     console.log(req.body);
 })
+
+//function to check if ticket with class title and date exists
+// bool = true if ticket exists and false if not    
+// function checkTicket(title, date) {
+//     let bool = false;
+//     fetch('http://localhost:8020/tickets')
+// }
 
 app.post('/postTicket', (req, res) => {
     const name = req.body.name;
