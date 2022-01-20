@@ -42,8 +42,16 @@ $(() => {
     const supervisorPhoneInput = $("input#supervisor-phone-input");
     // const supervisorInfo = [supervisorNameInput, supervisorEmailInput, supervisorPhoneInput];
 
-//BJRT variables
-const bjrtDateInput = $("input.BJRT-select-option");
+    //BJRT variables
+    const bjrtDateGroup = $("div#BJRT-select-group");
+    // const bjrtDateInput = document.querySelectorAll(".BJRT-select-option");
+    let bjrtDateInput;
+    // console.log(bjrtDateInput.val());
+
+    bjrtDateGroup.on("change", () => {
+        bjrtDateInput = document.querySelector('input[name="oneAnswer"]:checked').value;
+        console.log(bjrtDateInput);
+    });
 
 
 
