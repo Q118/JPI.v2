@@ -9,6 +9,8 @@ $(() => {
     console.log("sanity check")
 
     //disable the next section until the user has selected class
+    BJRTsection.hide();
+    // BJRTloader.show(); dont need as it will show by default
 
 
     // get references to our form and inputs
@@ -28,6 +30,14 @@ $(() => {
     const supervisorEmailInput = $("input#supervisor-email-input");
     const supervisorPhoneInput = $("input#supervisor-phone-input");
     // const supervisorInfo = [supervisorNameInput, supervisorEmailInput, supervisorPhoneInput];
+
+// once classSelect is selected, enable the BJRTsection to be visible
+    classSelect.on("change", () => {
+        BJRTsection.show();
+        BJRTloader.hide();
+    });
+
+
 
     questionForm.on("submit", function (event) {
         event.preventDefault();
