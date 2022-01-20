@@ -40,7 +40,7 @@
         <div><em>Please complete one assessment per attendee.</em></div>
 
         <form class="questionForm mt-5">
-            <h4>
+            <h4 class="text-primary">
                 * 1. Please provide your information
             </h4>
             <div class="input-group mb-3">
@@ -114,19 +114,61 @@
                 <option value="Yes">Yes</option>
                 <option value="No">No</option>
             </select>
+            <br>
+
+
+
+            <div id="BJRT-loader" class="text-center text-info mt-3">
+                <strong>Follow Up questions will appear here. . . </strong>
+                <div class="spinner-border" role="status"></div>
+            </div>
+
+            <div class="Beginner Jaspersoft Reports Training">
+                <h4>
+                    * 5. Please select a Beginner Jaspersoft Reports Training course date:
+                </h4>
+                <!--todo hard coding the datwes for now, will add in dynamically later with confluence API -->
+                <select id="BJRT-select" class="form-select">
+                    <option selected>select. . .</option>
+                    <option value="March 1 - 3, 2022 - Virtual Training">March 1 - 3, 2022 - Virtual Training</option>
+                    <option value="April 12 - 14, 2022 - Virtual Training">April 12 - 14, 2022 - Virtual Training
+                    </option>
+                    <option value="May 24 - 26, 2022 - Virtual Training">May 24 - 26, 2022 - Virtual Training</option>
+                    <option value="June 14 - 16, 2022 - Virtual Training">June 14 - 16, 2022 - Virtual Training</option>
+                    <option value="August 2 - 4, 2022 - Virtual Training">August 2 - 4, 2022 - Virtual Training</option>
+                    <option value="September 20 - 22, 2022 - Virtual Training">September 20 - 22, 2022 - Virtual Training</option>
+                    <option value="November 8 - 10, 2022 - Virtual Training">November 8 - 10, 2022 - Virtual Training</option>         
+                    <option value="Waitlist for the next available course">Waitlist for the next available course</option>
+                    <!-- <option value="I am not interested in this course">Has a quote been provided and approved by the CU? If so, please specify the course dates that have been agreed upon as well as the location. Otherwise please reach out to TechnicalTraining@CorelationInc.com if you are interested in custom training.</option> -->
+               <!-- todo: add text input for the user to add custom date -->
+                </select>
+            </div>
+
+
+
+
+
+
+
+
 
             <div class="text-center mt-2">
                 <!-- todo: add validation to stop submitting if one of the required fields are not filled out -->
                 <button type="submit" class="btn btn-secondary btn-lg">Submit</button>
             </div>
         </form>
+
+
+
+
+
     </main>
 
 
 
-<!-- use the non-slim  build of jQuery -->
-<script src="https://code.jquery.com/jquery-3.4.1.min.js"
-    integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>   
+    <!-- use the non-slim  build of jQuery(in order to be ble to access AJAX functionality) -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
     <script src="./JS/index.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"

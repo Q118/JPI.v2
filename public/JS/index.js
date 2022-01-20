@@ -1,14 +1,22 @@
 //main functions for the index page
 
+//variables that will start out hidden
+const BJRTsection = $("#BJRT-section");
+const BJRTloader = $("#BJRT-loader");
+
 $(() => {
 
     console.log("sanity check")
+
+    //disable the next section until the user has selected class
+
 
     // get references to our form and inputs
     const questionForm = $("form.questionForm");
     const nameInput = $("input#name-input");
     const emailInput = $("input#email-input");
     const phoneInput = $("input#phone-input");
+    //! do not set it = to the value here bc that will set is as the empty value bc its onLoad
     const cuInput = $("input#cu-input");
     const classSelect = $("select#class-select");
     const priorAttendance = $("select#priorAttendance-select");
