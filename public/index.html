@@ -64,7 +64,7 @@
                     aria-describedby="inputGroup-sizing-default">
             </div>
             <br>
-            <h4>
+            <h4 class="text-primary">
                 2. Please provide your supervisor information
             </h4>
             <div class="input-group mb-3">
@@ -83,7 +83,7 @@
                     aria-describedby="inputGroup-sizing-default">
             </div>
             <br>
-            <h4>
+            <h4 class="text-primary">
                 * 3. Please select a class:
             </h4>
             <em>
@@ -105,7 +105,7 @@
             </select>
 
             <br>
-            <h4>
+            <h4 class="text-primary">
                 * 4. Will you have been through KeyStone training, either conducted by your CUs staff or Corelation's
                 Trainers, prior to attending the selected technical training course?
             </h4>
@@ -118,37 +118,105 @@
 
 
 
-            <div id="BJRT-loader" class="text-center text-info mt-3">
+            <div id="next-loader" class="text-center text-info mt-3">
                 <strong>Follow Up questions will appear here. . . </strong>
                 <div class="spinner-border" role="status"></div>
             </div>
 
             <div id="BJRT-section" class="Beginner Jaspersoft Reports Training">
-                <h4>
+                <h4 class="text-primary">
                     * 5. Please select a Beginner Jaspersoft Reports Training course date:
                 </h4>
                 <!--todo hard coding the datwes for now, will add in dynamically later with confluence API -->
-                <select id="BJRT-select" class="form-select">
+                <div class="form-check">
+                    <input name="oneAnswer" class="BJRT-select-option form-check-input bg-secondary" type="radio"
+                        value="March 1 - 3, 2022 - Virtual Training" id="option1">
+                    <label class="form-check-label" for="option1">
+                        March 1 - 3, 2022 - Virtual Training
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input name="oneAnswer" class="BJRT-select-option form-check-input bg-secondary" type="radio"
+                        value="April 12 - 14, 2022 - Virtual Training" id="option2">
+                    <label class="form-check-label" for="option2">
+                        April 12 - 14, 2022 - Virtual Training
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input name="oneAnswer" class="BJRT-select-option form-check-input bg-secondary" type="radio"
+                        value="May 24 - 26, 2022 - Virtual Training" id="option3">
+                    <label class="form-check-label" for="option3">
+                        May 24 - 26, 2022 - Virtual Training
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input name="oneAnswer" class="BJRT-select-option form-check-input bg-secondary" type="radio"
+                        value="June 14 - 16, 2022 - Virtual Training" id="option4">
+                    <label class="form-check-label" for="option4">
+                        June 14 - 16, 2022 - Virtual Training
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input name="oneAnswer" class="BJRT-select-option form-check-input bg-secondary" type="radio"
+                        value="August 2 - 4, 2022 - Virtual Training" id="option5">
+                    <label class="form-check-label" for="option5">
+                        August 2 - 4, 2022 - Virtual Training
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input name="oneAnswer" class="BJRT-select-option form-check-input bg-secondary" type="radio"
+                        value="September 20 - 22, 2022 - Virtual Training" id="option6">
+                    <label class="form-check-label" for="option6">
+                        September 20 - 22, 2022 - Virtual Training
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input name="oneAnswer" class="BJRT-select-option form-check-input bg-secondary" type="radio"
+                        value="November 8 - 10, 2022 - Virtual Training" id="option7">
+                    <label class="form-check-label" for="option7">
+                        November 8 - 10, 2022 - Virtual Training
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input name="oneAnswer" class="BJRT-select-option form-check-input bg-secondary" type="radio"
+                        value="Waitlist for the next available course" id="option8">
+                    <label class="form-check-label" for="option8">
+                        Waitlist for the next available course
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input name="oneAnswer" class="BJRT-select-option form-check-input bg-secondary" type="radio"
+                        value="custom" id="option9">
+                    <label class="form-check-label" for="option9">
+                        Has a quote been provided and approved by the CU?
+                        If so, please specify the course dates that have been agreed upon as well as the location.
+                        Otherwise please reach out to TechnicalTraining@CorelationInc.com
+                        if you are interested in custom training.
+                    </label>
+                    <input id="BJRT-custom-text" type="text" aria-label="custom-input" class="form-control">
+                </div>
+
+                <!-- </select> -->
+                <h4 class="text-primary">
+                    * 6. Are you familiar with the tables & fields in KeyStone?
+                </h4>
+                <!--todo hard coding the dates for now, will add in dynamically later with confluence API -->
+                <select id="BJRT-location-select" class="form-select">
                     <option selected>select. . .</option>
-                    <option value="March 1 - 3, 2022 - Virtual Training">March 1 - 3, 2022 - Virtual Training</option>
-                    <option value="April 12 - 14, 2022 - Virtual Training">April 12 - 14, 2022 - Virtual Training
-                    </option>
-                    <option value="May 24 - 26, 2022 - Virtual Training">May 24 - 26, 2022 - Virtual Training</option>
-                    <option value="June 14 - 16, 2022 - Virtual Training">June 14 - 16, 2022 - Virtual Training</option>
-                    <option value="August 2 - 4, 2022 - Virtual Training">August 2 - 4, 2022 - Virtual Training</option>
-                    <option value="September 20 - 22, 2022 - Virtual Training">September 20 - 22, 2022 - Virtual Training</option>
-                    <option value="November 8 - 10, 2022 - Virtual Training">November 8 - 10, 2022 - Virtual Training</option>         
-                    <option value="Waitlist for the next available course">Waitlist for the next available course</option>
-                    <!-- <option value="I am not interested in this course">Has a quote been provided and approved by the CU? If so, please specify the course dates that have been agreed upon as well as the location. Otherwise please reach out to TechnicalTraining@CorelationInc.com if you are interested in custom training.</option> -->
-               <!-- todo: add text input for the user to add custom date -->
+                    <option value="Yes">Yes</option>
+                    <option value="No">No</option>
                 </select>
             </div>
 
+            <!-- final questions will appear jhere.. -->
 
             <div class="text-center mt-2">
                 <!-- todo: add validation to stop submitting if one of the required fields are not filled out -->
                 <button type="submit" class="btn btn-secondary btn-lg">Submit</button>
             </div>
+
+
+
         </form>
 
 

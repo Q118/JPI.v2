@@ -2,15 +2,26 @@
 
 //variables that will start out hidden
 const BJRTsection = $("#BJRT-section");
-const BJRTloader = $("#BJRT-loader");
+const nextLoader = $("#next-loader");
+
+const finalSection = $("#final-section");
+
+//function to look at whats selected and display the correct section based off that
+// function displaySection(selection, section, loader) {
+//     // if the selection.toString is equal to the sections class attribute
+//     if (selection.toString() === section.attr("class")) {
+//         section.show();
+//         loader.hide();
+//     }
+// }
+// todo: the above function needs help.. it works but need to differentiate the sections
+
 
 $(() => {
-
-    console.log("sanity check")
-
     //disable the next section until the user has selected class
     BJRTsection.hide();
-    // BJRTloader.show(); dont need as it will show by default
+    //disable the final section until the user has finished the 'next' section
+    //finalSection.hide();
 
 
     // get references to our form and inputs
@@ -31,15 +42,24 @@ $(() => {
     const supervisorPhoneInput = $("input#supervisor-phone-input");
     // const supervisorInfo = [supervisorNameInput, supervisorEmailInput, supervisorPhoneInput];
 
-// once classSelect is selected, enable the BJRTsection to be visible
+//BJRT variables
+const bjrtDateInput = $("input.BJRT-select-option");
+
+
+
+    // once classSelect is selected, enable the BJRTsection to be visible
     classSelect.on("change", () => {
-        BJRTsection.show();
-        BJRTloader.hide();
+        //if the user selects the BJRT option
+        if (classSelect.val() === "Beginner Jaspersoft Reports Training") {
+            BJRTsection.show();
+            nextLoader.hide();
+        }
+        //displaySection(classSelect.val(), BJRTsection, nextLoader);
     });
 
 
 
-    questionForm.on("submit", function (event) {
+    questionForm.on("submit", (event) => {
         event.preventDefault();
         if (personInfo.some(el => el.val() === "") || personInfo.some(el => el.val() === "select. . .")) {
             alert("please fill out all the required fields!")
