@@ -44,15 +44,11 @@ $(() => {
 
     //BJRT variables
     const bjrtDateGroup = $("div#BJRT-select-group");
-    // const bjrtDateInput = document.querySelectorAll(".BJRT-select-option");
     let bjrtDateInput;
-    // console.log(bjrtDateInput.val());
-
     bjrtDateGroup.on("change", () => {
         bjrtDateInput = document.querySelector('input[name="oneAnswer"]:checked').value;
         console.log(bjrtDateInput);
     });
-
 
 
     // once classSelect is selected, enable the BJRTsection to be visible
@@ -63,12 +59,17 @@ $(() => {
             nextLoader.hide();
         }
         //displaySection(classSelect.val(), BJRTsection, nextLoader);
+        // repeat above for each section and it will work
     });
 
 
 
     questionForm.on("submit", (event) => {
         event.preventDefault();
+        let classSelection = "";
+        // this is to get the full title of the ticket
+        classSelection = `${classSelect.val()} : ${bjrtDateInput}`;
+        // console.log(classSelection); // debug
         if (personInfo.some(el => el.val() === "") || personInfo.some(el => el.val() === "select. . .")) {
             alert("please fill out all the required fields!")
         } else {
@@ -81,7 +82,7 @@ $(() => {
                     email: emailInput.val(),
                     phone: phoneInput.val(),
                     cu: cuInput.val(),
-                    class: classSelect.val(),
+                    class: classSelection,
                     priorAttendance: priorAttendance.val(),
                     supervisorName: supervisorNameInput.val() === "" ? "none provided" : supervisorNameInput.val(),
                     supervisorEmail: supervisorEmailInput.val() === "" ? "none provided" : supervisorEmailInput.val(),

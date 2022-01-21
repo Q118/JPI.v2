@@ -62,11 +62,13 @@ app.post('/postTicket', (req, res) => {
                 {
                     "key": "VCRT"
                 },
-                "summary": `${name} -- ${classSelect}`,
-                "description": `CU: ${cu},
+                "summary": `${classSelect}`,
+                "description": `Name: ${name}
+                                CU: ${cu},
                                 Phone: ${phone}, 
                                 Email: ${email},
-                                Prior Attendance?: ${priorAttendance}`,
+                                Prior Attendance?: ${priorAttendance}
+                                ----`,
                 "issuetype": {
                     "name": "Basic Functionality"
                 }
