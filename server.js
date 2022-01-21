@@ -87,10 +87,18 @@ function checkTicketExistence(summary) {
             // console.log(text)
             console.log("type of: " + typeof text)
             currentList = JSON.parse(text);
-            console.log(currentList)
-            console.log(typeof currentList)
-            
-            // currentList.push(text);
+            let ticketList = []; // push every element from currentList.issues.summary into an array
+            for (let i = 0; i < currentList.issues.length; i++) {
+                ticketList.push(currentList.issues[i].fields.summary);
+            }
+            // forEach element in ticketList, check if the summary matches the summary of the ticket user wants to create
+            ticketList.forEach(element => {
+                console.log(element)
+                if (element === summary) {
+                    console.log("ticket exists");
+                    ticketExistence = true;
+                }
+            });
         }).catch(err => console.error(err));
 }
 
