@@ -4,3 +4,10 @@
     the description holds sections with each attendee and their basic info
         seperated by a ----
     the comments hold additional information for each attendee ( additonal info, "none" if left blank)
+
+function: if it exists
+    make call to jira to see if project has an issue already with a specific summary
+if not
+    create the ticket with that summary
+if yes
+    return and do the rest of the logic

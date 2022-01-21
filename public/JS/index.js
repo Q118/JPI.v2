@@ -60,6 +60,7 @@ $(() => {
         }
         //displaySection(classSelect.val(), BJRTsection, nextLoader);
         // repeat above for each section and it will work
+        //! put all sections and do a forEACH to send them all through displaySection
     });
 
 

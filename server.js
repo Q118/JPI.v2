@@ -28,11 +28,77 @@ app.get('/postTicket', (req, res) => {
 })
 
 //function to check if ticket with class title and date exists
-// bool = true if ticket exists and false if not    
-// function checkTicket(title, date) {
-//     let bool = false;
-//     fetch('http://localhost:8020/tickets')
-// }
+// bool = true if ticket exists and false if not
+// let ticketExistence;;
+// function checkTicketExistence(summary) {
+//     app.get('/checkTicketExistence', (req, res) => {
+//     ticketExistence = false;
+//     fetch('http://jira.corelationinc.com/rest/api/2/issue/', {
+//         method: 'POST',
+//         headers: {
+//             'Accept': 'application/json, text/plain, */*',
+//             'Content-Type': 'application/json',
+//             'Authorization': 'Basic c3JvdGhtYW46UmF0dDNhdHQh',
+//         },
+//         body: JSON.stringify({
+//             "body": {
+//                 "jql": "project = VCRT AND status=Open AND resolution = Unresolved",
+//                 "maxResults": 100,
+//                 "fields": [
+//                     "summary"
+//                 ],
+//                 "startAt": 0
+//             }
+//         })
+//     })
+//         .then(response => {
+//             res.send(response.json());
+//             console.log(response.json().text());
+//         })
+//         .catch(error => console.error('Error:', error))
+// })
+
+let currentList;
+
+function checkTicketExistence(summary) {
+    const bodyData = `{ "jql": "project = VCRT AND status=Open AND resolution = Unresolved",
+                            "maxResults": 100,
+                            "fields": [
+                                "summary"
+                            ],
+                            "startAt": 0
+                            }`;
+    fetch('http://jira.corelationinc.com/rest/api/2/search/', {
+        method: 'POST',
+        headers: {
+            'Authorization': 'Basic c3JvdGhtYW46UmF0dDNhdHQh',
+            'Accept': 'application/json, text/plain, */*',
+            'Content-Type': 'application/json'
+        },
+        body: bodyData
+    })
+        .then(response => {
+            console.log(
+                `Response: ${response.status} ${response.statusText}`
+            );
+            return response.text();
+        })
+        .then(text => {
+            // console.log(text)
+            console.log("type of: " + typeof text)
+            currentList = JSON.parse(text);
+            console.log(currentList)
+            console.log(typeof currentList)
+            
+            // currentList.push(text);
+        }).catch(err => console.error(err));
+}
+
+checkTicketExistence();
+
+// console.log(currentList[0]);
+
+
 
 app.post('/postTicket', (req, res) => {
     const name = req.body.name;
