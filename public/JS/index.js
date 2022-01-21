@@ -79,7 +79,7 @@ $(() => {
                 contentType: "application/x-www-form-urlencoded",
                 url: "/postTicket",
                 data: {
-                    name: nameInput.val(),
+                    attendeeName: nameInput.val(),
                     email: emailInput.val(),
                     phone: phoneInput.val(),
                     cu: cuInput.val(),

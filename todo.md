@@ -11,3 +11,6 @@ if not
     create the ticket with that summary
 if yes
     return and do the rest of the logic
+
+
+perhaps put all answers to the OPTIONAL questions on to a pdf (like tt-173) and attach that to the ticket?

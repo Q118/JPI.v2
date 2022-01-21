@@ -23,10 +23,49 @@ app.get("/", (req, res) => {
     res.render("index");
 });
 
-
+//function to send ticket if it does not exist
+const sendTicket = (classSelect, attendeeName, cu, phone, email, priorAttendance) => {
+    return new Promise((resolve, reject) => {
+        fetch('http://jira.corelationinc.com/rest/api/2/issue/', {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json, text/plain, */*',
+                'Content-Type': 'application/json',
+                'Authorization': 'Basic c3JvdGhtYW46UmF0dDNhdHQh',
+            },
+            body: JSON.stringify({
+                "fields": {
+                    "project":
+                    {
+                        "key": "VCRT"
+                    },
+                    "summary": `${classSelect}`,
+                    "description": `Name: ${attendeeName}
+                                    CU: ${cu},
+                                    Phone: ${phone}, 
+                                    Email: ${email},
+                                    Prior Attendance?: ${priorAttendance}
+                                    ----`,
+                    "issuetype": {
+                        "name": "Basic Functionality"
+                    }
+                }
+            })
+        }).then(response => {
+            res.send(response.json());
+            console.log(response);
+            resolve();
+        }).catch(error => {
+            console.error('Error:', error)
+            reject();
+        })
+    });
+}
+//function to send if it does exist
+const updateTicket = (summary, description) => {
+}
 
 let ticketExistence;
-// function checkTicketExistence(summary) {
 const checkTicketExistence = (summary) => {
     return new Promise((resolve, reject) => {
         ticketExistence = false;
@@ -77,19 +116,13 @@ const checkTicketExistence = (summary) => {
 
 app.get('/postTicket', async (req, res) => {
     console.log(req.body);
-    // await checkTicketExistence("tester MaacGee -- KeyBridge Training").catch(err => console.error(err));
-    // if (ticketExistence === true) {
-    //     console.log("ticketttttt exists");
-    // } else {
-    //     console.log("ticket does not exist");
-    // }
 })
 
 
 
 
 app.post('/postTicket', async (req, res) => {
-    const name = req.body.name;
+    const attendeeName = req.body.attendeeName;
     const email = req.body.email;
     const phone = req.body.phone;
     const cu = req.body.cu;
@@ -97,17 +130,15 @@ app.post('/postTicket', async (req, res) => {
     const priorAttendance = req.body.priorAttendance;
 
     await checkTicketExistence(classSelect).catch(err => console.error(err));
-    if (ticketExistence === true) {
+
+    if (ticketExistence === true || ticketExistence) {
         console.log("ticketttttt exists");
-                // add comment and edit description to the ticket
+        // add comment and edit description to the ticket
     } else {
         console.log("ticket does not exist");
-        // create ticket
+        await sendTicket(classSelect, attendeeName, cu, phone, email, priorAttendance).catch(err => console.error(err));
     }
-
-
-
-    // fetch('http://jira.corelationinc.com/rest/api/2/issue/', {
+   // fetch('http://jira.corelationinc.com/rest/api/2/issue/', {
     //     method: 'POST',
     //     headers: {
     //         'Accept': 'application/json, text/plain, */*',
