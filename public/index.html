@@ -190,24 +190,63 @@
                             value="custom" id="option9">
                         <label class="form-check-label" for="option9">
                             Has a quote been provided and approved by the CU?
-                            If so, please specify the course dates that have been agreed upon as well as the location.
+                            If so, please specify the course dates that have been agreed upon
+                            as well as the location.
                             Otherwise please reach out to TechnicalTraining@CorelationInc.com
                             if you are interested in custom training.
                         </label>
                         <input id="BJRT-custom-text" type="text" aria-label="custom-input" class="form-control">
                     </div>
                 </div>
+                <!--todo hard coding the dates for now, will add in dynamically later with confluence API -->
+
 
                 <br>
                 <h4 class="text-primary">
-                    * 6. Are you familiar with the tables & fields in KeyStone?
+                     6. Are you familiar with the tables & fields in KeyStone?
                 </h4>
-                <!--todo hard coding the dates for now, will add in dynamically later with confluence API -->
-                <select id="BJRT-location-select" class="form-select">
+                <select id="BJRT-tf" class="form-select">
                     <option selected>select. . .</option>
                     <option value="Yes">Yes</option>
                     <option value="No">No</option>
                 </select>
+
+                <br>
+                <h4 class="text-primary">
+                     7. Have you ever used Excel, Access, Crystal Reporting, or a similar tool
+                    to collect data?
+                </h4>
+                <select id="BJRT-collectData" class="form-select">
+                    <option selected>select. . .</option>
+                    <option value="Yes">Yes</option>
+                    <option value="No">No</option>
+                </select>
+
+                <br>
+                <h4 class="text-primary">
+                     8. Have you ever ran a SQL query?
+                </h4>
+                <select id="BJRT-SQL" class="form-select">
+                    <option selected>select. . .</option>
+                    <option value="Yes">Yes</option>
+                    <option value="No">No</option>
+                </select>
+
+                <br>
+                <h4 class="text-primary">
+                    9. Do you have previous coding experience?
+                </h4>
+                <select id="BJRT-tf" class="form-select">
+                    <option selected>select. . .</option>
+                    <option value="Yes">Yes</option>
+                    <option value="No">No</option>
+                </select>
+                <div class="input-group mb-3 mt-1">
+                    <span class="input-group-text" id="basic-addon1">If yes, please specify:</span>
+                    <input type="text" class="form-control" placeholder="no coding experience" aria-label="Username" aria-describedby="basic-addon1">
+                  </div>
+
+
             </div>
 
             <!-- final questions will appear jhere.. -->
