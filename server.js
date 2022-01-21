@@ -110,6 +110,37 @@ const sendTicket = (classSelect, attendeeName, cu, phone, email, priorAttendance
             currentIssue = JSON.parse(text);
             currentIssue = currentIssue.key;
             resolve();
+            return new Promise((resolve, reject) => {
+                console.log("adding comment");
+                //need variable from the response of sendTicket
+                fetch(`http://jira.corelationinc.com/rest/api/2/issue/${currentIssue}`, {
+                    method: 'PUT',
+                    headers: {
+                        'Accept': 'application/json, text/plain, */*',
+                        'Content-Type': 'application/json',
+                        'Authorization': 'Basic c3JvdGhtYW46UmF0dDNhdHQh',
+                    },
+                    body: JSON.stringify({
+                        "update": {
+                            "comment": [
+                                {
+                                    "add": {
+                                        "body": "This comment will hold additional info about the newly-registered attendee and it will tag a trainer to notify them of a new registration. This comment appears when the new ticket is created."
+                                    }
+                                }
+                            ]
+                        }
+                    })
+                }).then(response => {
+                    console.log(
+                        `Response: ${response.status} ${response.statusText}`
+                    );
+                    return response.text();
+                }).catch(error => {
+                    console.error('Error:', error)
+                    reject();
+                })
+            });
         }).catch(error => {
             console.error('Error:', error)
             reject();
@@ -118,38 +149,40 @@ const sendTicket = (classSelect, attendeeName, cu, phone, email, priorAttendance
 }
 
 //todo: function to add comment to a newly created ticket that will run right after the above one. to notify the trainer and put the additonal info in
-const addComment = () => {
-    return new Promise((resolve, reject) => {
-        //need variable from the response of sendTicket
-        fetch(`http://jira.corelationinc.com/rest/api/2/issue/${currentIssue}`, {
-            method: 'PUT',
-            headers: {
-                'Accept': 'application/json, text/plain, */*',
-                'Content-Type': 'application/json',
-                'Authorization': 'Basic c3JvdGhtYW46UmF0dDNhdHQh',
-            },
-            body: JSON.stringify({
-                "update": {
-                    "comment": [
-                        {
-                            "add": {
-                                "body": "This comment will hold additional info about the newly-registered attendee and it will tag a trainer to notify them of a new registration. This comment appears when the new ticket is created."
-                            }
-                        }
-                    ]
-                }
-            })
-        }).then(response => {
-            console.log(
-                `Response: ${response.status} ${response.statusText}`
-            );
-            return response.text();
-        }).catch(error => {
-            console.error('Error:', error)
-            reject();
-        })
-    });
-}
+// const addComment = () => {
+//     console.log("Hello! Comment function is running!");
+//     return new Promise((resolve, reject) => {
+//         console.log("adding comment");
+//         //need variable from the response of sendTicket
+//         fetch(`http://jira.corelationinc.com/rest/api/2/issue/${currentIssue}`, {
+//             method: 'PUT',
+//             headers: {
+//                 'Accept': 'application/json, text/plain, */*',
+//                 'Content-Type': 'application/json',
+//                 'Authorization': 'Basic c3JvdGhtYW46UmF0dDNhdHQh',
+//             },
+//             body: JSON.stringify({
+//                 "update": {
+//                     "comment": [
+//                         {
+//                             "add": {
+//                                 "body": "This comment will hold additional info about the newly-registered attendee and it will tag a trainer to notify them of a new registration. This comment appears when the new ticket is created."
+//                             }
+//                         }
+//                     ]
+//                 }
+//             })
+//         }).then(response => {
+//             console.log(
+//                 `Response: ${response.status} ${response.statusText}`
+//             );
+//             return response.text();
+//         }).catch(error => {
+//             console.error('Error:', error)
+//             reject();
+//         })
+//     });
+// }
 
 
 //function to send if it does exist
@@ -216,9 +249,10 @@ app.post('/postTicket', async (req, res) => {
         console.log("ticketttttt exists");
         // add comment and edit description to the ticket
         await updateTicket(classSelect, attendeeName, cu, phone, email, priorAttendance)
-            .then(() => {
-                addComment().catch(err => console.error(err));
-            }).catch(err => console.error(err));
+            // .then(() => {
+            //     addComment().catch(err => console.error(err));
+            // })
+            .catch(err => console.error(err));
     } else {
         console.log("ticket does not exist");
         await sendTicket(classSelect, attendeeName, cu, phone, email, priorAttendance)
