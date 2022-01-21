@@ -26,7 +26,6 @@ app.get("/", (req, res) => {
 // we need this to save and then append to it the next section of info
 let ticketDescription;
 let issueName; //also need the title for the same reason
-
 let ticketExistence; //boolean to keep track of existence of ticket
 const checkTicketExistence = (summary) => {
     return new Promise((resolve, reject) => {
@@ -36,7 +35,8 @@ const checkTicketExistence = (summary) => {
         const bodyData = `{ "jql": "project = VCRT AND status=Open AND resolution = Unresolved",
                             "maxResults": 100,
                             "fields": [
-                                "summary"
+                                "summary",
+                                "description"
                             ],
                             "startAt": 0
                             }`;
@@ -54,20 +54,18 @@ const checkTicketExistence = (summary) => {
             );
             return response.text();
         }).then(text => {
-            console.log("type of: " + typeof text)
             currentList = JSON.parse(text);
-            let ticketList = []; // push every element from currentList.issues.summary into an array
+            let issueList = []; // push every element from currentList.issues into an array
             for (let i = 0; i < currentList.issues.length; i++) {
-                ticketList.push(currentList.issues[i].fields.summary);
-                ticketDescription = currentList.issues[i].fields.description;
-                issueName = currentList.issues[i].key;
+                issueList.push(currentList.issues[i]);
             }
-            // forEach element in ticketList, check if the summary matches the summary of the ticket user wants to create
-            ticketList.forEach(element => {
-                console.log(element)
-                if (element === summary) {
+            // forEach element in issueList, check if the summary matches the summary of the ticket user wants to create
+            issueList.forEach(element => {
+                if (element?.fields?.summary === summary) {
                     console.log("ticket exists in scope of function!");
                     ticketExistence = true;
+                    ticketDescription = element?.fields?.description;
+                    issueName = element?.key;
                 }
             });
             resolve();
@@ -100,6 +98,8 @@ const sendTicket = (classSelect, attendeeName, cu, phone, email, priorAttendance
                                     Phone: ${phone}, 
                                     Email: ${email},
                                     Prior Attendance?: ${priorAttendance}
+                                    IP: (IP address of attendee)
+                                    Notes: (Additional info provided in comments)
                                     ----`,
                     "issuetype": {
                         "name": "Basic Functionality"
@@ -107,9 +107,10 @@ const sendTicket = (classSelect, attendeeName, cu, phone, email, priorAttendance
                 }
             })
         }).then(response => {
-            res.send(response.json());
-            console.log(response);
-            resolve();
+            console.log(
+                `Response: ${response.status} ${response.statusText}`
+            );
+            return response.text();
         }).catch(error => {
             console.error('Error:', error)
             reject();
@@ -140,6 +141,8 @@ const updateTicket = (classSelect, attendeeName, cu, phone, email, priorAttendan
                                     Phone: ${phone},
                                     Email: ${email},
                                     Prior Attendance?: ${priorAttendance}
+                                    IP: (IP address of attendee)
+                                    Notes: (Additional info provided in comments)
                                     ----`
                         }
                     ],
@@ -153,9 +156,10 @@ const updateTicket = (classSelect, attendeeName, cu, phone, email, priorAttendan
                 }
             })
         }).then(response => {
-            res.send(response.json());
-            console.log(response);
-            resolve();
+            console.log(
+                `Response: ${response.status} ${response.statusText}`
+            );
+            return response.text();
         }).catch(error => {
             console.error('Error:', error)
             reject();
@@ -166,7 +170,6 @@ const updateTicket = (classSelect, attendeeName, cu, phone, email, priorAttendan
 app.get('/postTicket', async (req, res) => {
     console.log(req.body);
 })
-
 
 
 
@@ -183,39 +186,13 @@ app.post('/postTicket', async (req, res) => {
     if (ticketExistence === true || ticketExistence) {
         console.log("ticketttttt exists");
         // add comment and edit description to the ticket
+        await updateTicket(classSelect, attendeeName, cu, phone, email, priorAttendance)
+            .catch(err => console.error(err));
     } else {
         console.log("ticket does not exist");
-        await sendTicket(classSelect, attendeeName, cu, phone, email, priorAttendance).catch(err => console.error(err));
+        await sendTicket(classSelect, attendeeName, cu, phone, email, priorAttendance)
+            .catch(err => console.error(err));
     }
-    // fetch('http://jira.corelationinc.com/rest/api/2/issue/', {
-    //     method: 'POST',
-    //     headers: {
-    //         'Accept': 'application/json, text/plain, */*',
-    //         'Content-Type': 'application/json',
-    //         'Authorization': 'Basic c3JvdGhtYW46UmF0dDNhdHQh',
-    //     },
-    //     body: JSON.stringify({
-    //         "fields": {
-    //             "project":
-    //             {
-    //                 "key": "VCRT"
-    //             },
-    //             "summary": `${classSelect}`,
-    //             "description": `Name: ${name}
-    //                             CU: ${cu},
-    //                             Phone: ${phone}, 
-    //                             Email: ${email},
-    //                             Prior Attendance?: ${priorAttendance}
-    //                             ----`,
-    //             "issuetype": {
-    //                 "name": "Basic Functionality"
-    //             }
-    //         }
-    //     })
-    // }).then(response => {
-    //     res.send(response.json());
-    //     console.log(response);
-    // }).catch(error => console.error('Error:', error))
 })
 
 
