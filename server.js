@@ -120,7 +120,6 @@ const sendTicket = (classSelect, attendeeName, cu, phone, email, priorAttendance
 
 //todo: function to add comment to a newly created ticket that will run right after the above one. to notify the trainer and put the additonal info in
 
-
 //function to send if it does exist
 const updateTicket = (classSelect, attendeeName, cu, phone, email, priorAttendance) => {
     return new Promise((resolve, reject) => {
@@ -170,8 +169,6 @@ const updateTicket = (classSelect, attendeeName, cu, phone, email, priorAttendan
 app.get('/postTicket', async (req, res) => {
     console.log(req.body);
 })
-
-
 
 app.post('/postTicket', async (req, res) => {
     const attendeeName = req.body.attendeeName;
