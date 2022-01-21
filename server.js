@@ -4,17 +4,11 @@ const app = express();
 const port = 8020;
 const cors = require('cors');
 const fetch = require('node-fetch');
-// Serve static content for the app from the "public" directory 
-app.use(express.static("public"));
-// Parse application body
-app.use(express.urlencoded({ extended: true }));
+app.use(express.static("public")); // Serve static content for the app from the "public" directory 
+app.use(express.urlencoded({ extended: true })); // Parse application body
 app.use(express.json());
 
-
-
-//todo add in  description to 'see comments for registers details' 
 //todo also add the 'IP' and 'Notes' in the main description
-
 
 app.use(cors());
 
@@ -23,8 +17,7 @@ app.get("/", (req, res) => {
 });
 
 //variable to hold the description of the ticket that exists
-// we need this to save and then append to it the next section of info
-let ticketDescription;
+let ticketDescription; // we need this to save and then append to it the next section of info
 let issueName; //also need the title for the same reason
 let ticketExistence; //boolean to keep track of existence of ticket
 const checkTicketExistence = (summary) => {
@@ -79,6 +72,7 @@ const checkTicketExistence = (summary) => {
 //function to send ticket if it does not exist
 const sendTicket = (classSelect, attendeeName, cu, phone, email, priorAttendance) => {
     return new Promise((resolve, reject) => {
+        let currentIssue;
         fetch('http://jira.corelationinc.com/rest/api/2/issue/', {
             method: 'POST',
             headers: {
@@ -111,6 +105,11 @@ const sendTicket = (classSelect, attendeeName, cu, phone, email, priorAttendance
                 `Response: ${response.status} ${response.statusText}`
             );
             return response.text();
+        }).then(text => {
+            console.log(text);
+            currentIssue = JSON.parse(text);
+            currentIssue = currentIssue.key;
+            resolve();
         }).catch(error => {
             console.error('Error:', error)
             reject();
@@ -119,6 +118,39 @@ const sendTicket = (classSelect, attendeeName, cu, phone, email, priorAttendance
 }
 
 //todo: function to add comment to a newly created ticket that will run right after the above one. to notify the trainer and put the additonal info in
+const addComment = () => {
+    return new Promise((resolve, reject) => {
+        //need variable from the response of sendTicket
+        fetch(`http://jira.corelationinc.com/rest/api/2/issue/${currentIssue}`, {
+            method: 'PUT',
+            headers: {
+                'Accept': 'application/json, text/plain, */*',
+                'Content-Type': 'application/json',
+                'Authorization': 'Basic c3JvdGhtYW46UmF0dDNhdHQh',
+            },
+            body: JSON.stringify({
+                "update": {
+                    "comment": [
+                        {
+                            "add": {
+                                "body": "This comment will hold additional info about the newly-registered attendee and it will tag a trainer to notify them of a new registration. This comment appears when the new ticket is created."
+                            }
+                        }
+                    ]
+                }
+            })
+        }).then(response => {
+            console.log(
+                `Response: ${response.status} ${response.statusText}`
+            );
+            return response.text();
+        }).catch(error => {
+            console.error('Error:', error)
+            reject();
+        })
+    });
+}
+
 
 //function to send if it does exist
 const updateTicket = (classSelect, attendeeName, cu, phone, email, priorAttendance) => {
@@ -184,7 +216,9 @@ app.post('/postTicket', async (req, res) => {
         console.log("ticketttttt exists");
         // add comment and edit description to the ticket
         await updateTicket(classSelect, attendeeName, cu, phone, email, priorAttendance)
-            .catch(err => console.error(err));
+            .then(() => {
+                addComment().catch(err => console.error(err));
+            }).catch(err => console.error(err));
     } else {
         console.log("ticket does not exist");
         await sendTicket(classSelect, attendeeName, cu, phone, email, priorAttendance)

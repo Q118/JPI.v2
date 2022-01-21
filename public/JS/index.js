@@ -69,7 +69,7 @@ $(() => {
         event.preventDefault();
         let classSelection = "";
         // this is to get the full title for the ticket-summary
-        classSelection = `${classSelect.val()} : ${bjrtDateInput}`;
+        classSelection = `${classSelect.val()} : ${bjrtDateInput ? bjrtDateInput : "No Date Selected"}`;
         // console.log(classSelection); // debug
         if (personInfo.some(el => el.val() === "") || personInfo.some(el => el.val() === "select. . .")) {
             alert("please fill out all the required fields!")
