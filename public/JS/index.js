@@ -68,7 +68,7 @@ $(() => {
     questionForm.on("submit", (event) => {
         event.preventDefault();
         let classSelection = "";
-        // this is to get the full title of the ticket
+        // this is to get the full title for the ticket-summary
         classSelection = `${classSelect.val()} : ${bjrtDateInput}`;
         // console.log(classSelection); // debug
         if (personInfo.some(el => el.val() === "") || personInfo.some(el => el.val() === "select. . .")) {

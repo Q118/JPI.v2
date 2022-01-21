@@ -23,68 +23,35 @@ app.get("/", (req, res) => {
     res.render("index");
 });
 
-app.get('/postTicket', (req, res) => {
-    console.log(req.body);
-})
 
-//function to check if ticket with class title and date exists
-// bool = true if ticket exists and false if not
-// let ticketExistence;;
+
+let ticketExistence;
 // function checkTicketExistence(summary) {
-//     app.get('/checkTicketExistence', (req, res) => {
-//     ticketExistence = false;
-//     fetch('http://jira.corelationinc.com/rest/api/2/issue/', {
-//         method: 'POST',
-//         headers: {
-//             'Accept': 'application/json, text/plain, */*',
-//             'Content-Type': 'application/json',
-//             'Authorization': 'Basic c3JvdGhtYW46UmF0dDNhdHQh',
-//         },
-//         body: JSON.stringify({
-//             "body": {
-//                 "jql": "project = VCRT AND status=Open AND resolution = Unresolved",
-//                 "maxResults": 100,
-//                 "fields": [
-//                     "summary"
-//                 ],
-//                 "startAt": 0
-//             }
-//         })
-//     })
-//         .then(response => {
-//             res.send(response.json());
-//             console.log(response.json().text());
-//         })
-//         .catch(error => console.error('Error:', error))
-// })
-
-let currentList;
-
-function checkTicketExistence(summary) {
-    const bodyData = `{ "jql": "project = VCRT AND status=Open AND resolution = Unresolved",
+const checkTicketExistence = (summary) => {
+    return new Promise((resolve, reject) => {
+        ticketExistence = false;
+        let currentList;
+        const bodyData = `{ "jql": "project = VCRT AND status=Open AND resolution = Unresolved",
                             "maxResults": 100,
                             "fields": [
                                 "summary"
                             ],
                             "startAt": 0
                             }`;
-    fetch('http://jira.corelationinc.com/rest/api/2/search/', {
-        method: 'POST',
-        headers: {
-            'Authorization': 'Basic c3JvdGhtYW46UmF0dDNhdHQh',
-            'Accept': 'application/json, text/plain, */*',
-            'Content-Type': 'application/json'
-        },
-        body: bodyData
-    })
-        .then(response => {
+        fetch('http://jira.corelationinc.com/rest/api/2/search/', {
+            method: 'POST',
+            headers: {
+                'Authorization': 'Basic c3JvdGhtYW46UmF0dDNhdHQh',
+                'Accept': 'application/json, text/plain, */*',
+                'Content-Type': 'application/json'
+            },
+            body: bodyData
+        }).then(response => {
             console.log(
                 `Response: ${response.status} ${response.statusText}`
             );
             return response.text();
-        })
-        .then(text => {
-            // console.log(text)
+        }).then(text => {
             console.log("type of: " + typeof text)
             currentList = JSON.parse(text);
             let ticketList = []; // push every element from currentList.issues.summary into an array
@@ -95,20 +62,33 @@ function checkTicketExistence(summary) {
             ticketList.forEach(element => {
                 console.log(element)
                 if (element === summary) {
-                    console.log("ticket exists");
+                    console.log("ticket exists in scope of function!");
                     ticketExistence = true;
                 }
             });
-        }).catch(err => console.error(err));
+            resolve();
+        }).catch(err => {
+            console.error(err)
+            reject();
+        });
+    });
 }
 
-checkTicketExistence();
 
-// console.log(currentList[0]);
+app.get('/postTicket', async (req, res) => {
+    console.log(req.body);
+    // await checkTicketExistence("tester MaacGee -- KeyBridge Training").catch(err => console.error(err));
+    // if (ticketExistence === true) {
+    //     console.log("ticketttttt exists");
+    // } else {
+    //     console.log("ticket does not exist");
+    // }
+})
 
 
 
-app.post('/postTicket', (req, res) => {
+
+app.post('/postTicket', async (req, res) => {
     const name = req.body.name;
     const email = req.body.email;
     const phone = req.body.phone;
@@ -116,45 +96,46 @@ app.post('/postTicket', (req, res) => {
     const classSelect = req.body.class;
     const priorAttendance = req.body.priorAttendance;
 
-    console.log(`name: ${name}`);
-    console.log(`email: ${email}`);
-    console.log(`phone: ${phone}`);
-    console.log(`cu: ${cu}`);
-    console.log(`class: ${classSelect}`);
-    console.log(`priorAttendance: ${priorAttendance}`);
+    await checkTicketExistence(classSelect).catch(err => console.error(err));
+    if (ticketExistence === true) {
+        console.log("ticketttttt exists");
+                // add comment and edit description to the ticket
+    } else {
+        console.log("ticket does not exist");
+        // create ticket
+    }
 
-    fetch('http://jira.corelationinc.com/rest/api/2/issue/', {
-        method: 'POST',
-        headers: {
-            'Accept': 'application/json, text/plain, */*',
-            'Content-Type': 'application/json',
-            'Authorization': 'Basic c3JvdGhtYW46UmF0dDNhdHQh',
-        },
-        body: JSON.stringify({
-            "fields": {
-                "project":
-                {
-                    "key": "VCRT"
-                },
-                "summary": `${classSelect}`,
-                "description": `Name: ${name}
-                                CU: ${cu},
-                                Phone: ${phone}, 
-                                Email: ${email},
-                                Prior Attendance?: ${priorAttendance}
-                                ----`,
-                "issuetype": {
-                    "name": "Basic Functionality"
-                }
-            }
-        })
-    })
-        .then(response => {
-            res.send(response.json());
-            console.log(response);
-        })
-        .catch(error => console.error('Error:', error))
 
+
+    // fetch('http://jira.corelationinc.com/rest/api/2/issue/', {
+    //     method: 'POST',
+    //     headers: {
+    //         'Accept': 'application/json, text/plain, */*',
+    //         'Content-Type': 'application/json',
+    //         'Authorization': 'Basic c3JvdGhtYW46UmF0dDNhdHQh',
+    //     },
+    //     body: JSON.stringify({
+    //         "fields": {
+    //             "project":
+    //             {
+    //                 "key": "VCRT"
+    //             },
+    //             "summary": `${classSelect}`,
+    //             "description": `Name: ${name}
+    //                             CU: ${cu},
+    //                             Phone: ${phone}, 
+    //                             Email: ${email},
+    //                             Prior Attendance?: ${priorAttendance}
+    //                             ----`,
+    //             "issuetype": {
+    //                 "name": "Basic Functionality"
+    //             }
+    //         }
+    //     })
+    // }).then(response => {
+    //     res.send(response.json());
+    //     console.log(response);
+    // }).catch(error => console.error('Error:', error))
 })
 
 
