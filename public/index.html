@@ -259,7 +259,7 @@
             </div>
 
 
-            <!-- AJRT SEDCTION -->
+            <!-- AJRT SECTION -->
             <div id="AJRT-section" class="Advanced Jaspersoft Reports Training">
 
                 <p>The Advanced Jaspersoft Reports training provides in-depth instruction on advanced SQL tips and
@@ -395,8 +395,146 @@
 
             </div>
 
+            <!-- UIST SECTION -->
+            <div id="UIST-section" class="UI Scripting Training">
+
+                <p>The UI Scripting training provides you with the tools and information needed to broaden KeyStone
+                    functionality for your specific needs. The UI (User Interface) script training will equip you to
+                    create your own programs to extend and customize the KeyStone user interface. This course will
+                    review how user interface scripting allows clients to customize various screens and workflows within
+                    KeyStone. It is sometimes referred to as a “UI script” or “front-office scripting.”</p>
+                <div id="UIST-select-group">
+                    <h4 class="text-primary">
+                        * 5. Please Select a UI Scripting Training Course Date:
+                    </h4>
+                    <!--todo hard coding the datwes for now, will add in dynamically later with confluence API -->
+                    <div class="form-check">
+                        <input name="oneAnswer" class="UIST-select-option form-check-input bg-secondary" type="radio"
+                            value="March 22 - 24, 2022 - Virtual Training" id="option1">
+                        <label class="form-check-label" for="option1">
+                            March 22 - 24, 2022 - Virtual Training
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input name="oneAnswer" class="UIST-select-option form-check-input bg-secondary" type="radio"
+                            value="May 3 - 5, 2022 - Virtual Training" id="option2">
+                        <label class="form-check-label" for="option2">
+                            May 3 - 5, 2022 - Virtual Training
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input name="oneAnswer" class="UIST-select-option form-check-input bg-secondary" type="radio"
+                            value="October 18 - 20, 2022 - Virtual Training" id="option3">
+                        <label class="form-check-label" for="option3">
+                            October 18 - 20, 2022 - Virtual Training
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input name="oneAnswer" class="UIST-select-option form-check-input bg-secondary" type="radio"
+                            value="December 6 - 8, 2022 - Virtual Training" id="option4">
+                        <label class="form-check-label" for="option4">
+                            December 6 - 8, 2022 - Virtual Training
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input name="oneAnswer" class="UIST-select-option form-check-input bg-secondary" type="radio"
+                            value="Waitlist for the next available course." id="option7">
+                        <label class="form-check-label" for="option7">
+                            Waitlist for the next available course.
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input name="oneAnswer" class="UIST-select-option form-check-input bg-secondary" type="radio"
+                            value="custom" id="option8">
+                        <label class="form-check-label" for="option8">
+                            Has a quote been provided and approved by the CU?
+                            If so, please specify the course dates that have been agreed upon
+                            as well as the location.
+                            Otherwise please reach out to TechnicalTraining@CorelationInc.com
+                            if you are interested in custom training.
+                        </label>
+                        <input id="UIST-custom-text" type="text" aria-label="custom-input" class="form-control">
+                    </div>
+                </div>
+                <!--todo hard coding the dates for now, will add in dynamically later with confluence API -->
 
 
+                <br>
+                <h4 class="text-primary">
+                    6. Are you familiar with KeyStone's tables and fields?
+                </h4>
+                <select id="UIST-tf" class="form-select">
+                    <option selected>select. . .</option>
+                    <option value="Yes">Yes</option>
+                    <option value="No">No</option>
+                </select>
+
+                <br>
+                <h4 class="text-primary">
+                    7. Do you have JavaScript programming experience?
+                </h4>
+                <select id="UIST-jsExp" class="form-select">
+                    <option selected>select. . .</option>
+                    <option value="Yes">Yes</option>
+                    <option value="No">No</option>
+                </select>
+
+                <br>
+                <h4 class="text-primary">
+                    8. Have you ever taken a programming class?
+                </h4>
+                <select id="UIST-programClass" class="form-select">
+                    <option selected>select. . .</option>
+                    <option value="Yes">Yes</option>
+                    <option value="No">No</option>
+                </select>
+
+                <br>
+                <h4 class="text-primary">
+                    8. Have you ever coded a program?
+                </h4>
+                <select id="UIST-codeProgram" class="form-select">
+                    <option selected>select. . .</option>
+                    <option value="Yes">Yes</option>
+                    <option value="No">No</option>
+                </select>
+                <div class="input-group mb-3 mt-1">
+                    <span class="input-group-text" id="UIST-codeLanguage">If yes, please specify the <br> programming
+                        language(s) used:</span>
+                    <input type="text" class="form-control" placeholder="programming languages..."
+                        aria-label="custom-input" aria-describedby="UIST-codeLanguage">
+                </div>
+
+
+                <br>
+                <h4 class="text-primary">
+                    10. Have you ever setup and run a user interface script (UI script)?
+                </h4>
+                <select id="UIST-script" class="form-select">
+                    <option selected>select. . .</option>
+                    <option value="I have setup a user interface script">I have setup a user interface script</option>
+                    <option value="I have run a user interface script">I have run a user interface script</option>
+                    <option value="I have setup and run a user interface script">I have setup and run a user interface
+                        script</option>
+                    <option value="I have not">I have not</option>
+                </select>
+
+                <br>
+                <h4 class="text-primary">
+                    8. Have you ever created a basic web page?
+                </h4>
+                <select id="UIST-webPage" class="form-select">
+                    <option selected>select. . .</option>
+                    <option value="Yes">Yes</option>
+                    <option value="No">No</option>
+                </select>
+                <div class="input-group mb-3 mt-1">
+                    <span class="input-group-text" id="UIST-webPageDescribe">If yes, please describe the <br>
+                        nature of the web page:</span>
+                    <input type="text" class="form-control" placeholder="web page description..."
+                        aria-label="custom-input" aria-describedby="UIST-webPageDescribe">
+                </div>
+            </div>
 
 
 

@@ -3,18 +3,21 @@
 //variables that will start out hidden
 const BJRTsection = $("#BJRT-section");
 const AJRTsection = $("#AJRT-section");
+const UISTsection = $("#UIST-section");
 const nextLoader = $("#next-loader");
+
+
 
 const finalSection = $("#final-section");
 
-let currentSectionSelection;
+// let currentSectionSelection;
 //function to look at whats selected and display the correct section based off that
 function displaySection(selection, section, loader) {
     // if the selection.toString is equal to the sections class attribute
     if (selection.toString() === section.attr("class")) {
         section.show();
         loader.hide();
-        currentSectionSelection = section;
+        // currentSectionSelection = section;
     } else {
         section.hide();
         loader.show(); // if user changes, the display will change
@@ -29,6 +32,7 @@ $(() => {
     //disable the next section until the user has selected class
     BJRTsection.hide();
     AJRTsection.hide();
+    UISTsection.hide();
 
     //disable the final section until the user has finished the 'next' section
     //finalSection.hide();
@@ -70,8 +74,9 @@ $(() => {
         // }
         displaySection(classSelect.val(), BJRTsection, nextLoader);
         displaySection(classSelect.val(), AJRTsection, nextLoader);
+        displaySection(classSelect.val(), UISTsection, nextLoader);
         // repeat above for each section and it will work
-        //! put all sections and do a forEACH to send them all through displaySection
+        //! put all sections in [] and do a forEACH to send them all through displaySection
     });
 
 

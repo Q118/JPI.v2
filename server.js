@@ -24,6 +24,22 @@ app.get("/", (req, res) => {
 //     console.log("My public IP address is: " + ip);
 //   });
 // });
+//or inline:
+//<script type="application/javascript">
+// function getIP(json) {
+//     document.write("My public IP address is: ", json.ip);
+//   }
+// </script>
+
+// $(function() {
+//     $.getJSON("https://api.ipify.org?format=jsonp&callback=?",
+//       function(json) {
+//         document.write("My public IP address is: ", json.ip);
+//       }
+//     );
+//   });
+
+// <script type="application/javascript" src="https://api.ipify.org?format=jsonp&callback=getIP"></script>
 
 
 //variable to hold the description of the ticket that exists
