@@ -6,6 +6,7 @@ const AJRTsection = $("#AJRT-section");
 const UISTsection = $("#UIST-section");
 const BSTsection = $("#BST-section");
 const SQLsection = $("#SQL-section");
+const KSATsection = $("#KSAT-section");
 
 const finalSection = $("#final-section");
 //loader to display only when user has no class selected
@@ -16,7 +17,14 @@ const nextLoader = $("#next-loader");
 
 
 // array of sections for manipulating their display
-const sections = [BJRTsection, AJRTsection, UISTsection, finalSection, SQLsection, BSTsection];
+const sections = [BJRTsection,
+    AJRTsection,
+    UISTsection,
+    finalSection,
+    SQLsection,
+    BSTsection,
+    KSATsection
+];
 
 // let currentSectionSelection;
 //function to look at whats selected and display the correct section based off that
@@ -77,16 +85,12 @@ $(() => {
     });
 
 
-    // once classSelect is selected, enable the BJRTsection to be visible
+    // once classSelect is selected, enable the appropriate section to visible
     classSelect.on("change", () => {
-        //display the section based o user-selected class:
-        displaySection(classSelect.val(), BJRTsection, nextLoader);
-        displaySection(classSelect.val(), AJRTsection, nextLoader);
-        displaySection(classSelect.val(), UISTsection, nextLoader);
-        displaySection(classSelect.val(), BSTsection, nextLoader);
-        displaySection(classSelect.val(), SQLsection, nextLoader);
-        // repeat above for each section and it will work
-        //! put all sections in [] and do a forEACH to send them all through displaySection
+        //display the section based on user-selected class:
+        sections.forEach(section => {
+            displaySection(classSelect.val(), section, nextLoader);
+        })
     });
 
 

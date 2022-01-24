@@ -714,6 +714,152 @@
                 </div>
             </div>
 
+            <!-- KSAT SECTION-->
+            <div id="KSAT-section" class="KeyStone Server Administration Training">
+
+                <p>The KeyStone Server Administration training provides in-depth instruction on the KeyStone AIX
+                    Administration Menu, daily operations, and system monitoring. It covers database backups, purges,
+                    HARD administration, and other backend server maintenance routines needed to keep KeyStone running
+                    as smoothly and efficiently as possible.</p>
+                <div id="KSAT-select-group">
+                    <h4 class="text-primary">
+                        * 5. Please select a KeyStone Server Administration course date:
+                    </h4>
+                    <!--todo hard coding the datwes for now, will add in dynamically later with confluence API -->
+                    <div class="form-check">
+                        <input name="oneAnswer" class="KSAT-select-option form-check-input bg-secondary" type="radio"
+                            value="March 16 - 17, 2022 - Virtual Training" id="option1">
+                        <label class="form-check-label" for="option1">
+                            March 16 - 17, 2022 - Virtual Training
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input name="oneAnswer" class="KSAT-select-option form-check-input bg-secondary" type="radio"
+                            value="April 27 - 28, 2022 - Virtual Training" id="option2">
+                        <label class="form-check-label" for="option2">
+                            April 27 - 28, 2022 - Virtual Training
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input name="oneAnswer" class="KSAT-select-option form-check-input bg-secondary" type="radio"
+                            value="June 1 - 2, 2022 - Virtual Training" id="option3">
+                        <label class="form-check-label" for="option3">
+                            June 1 - 2, 2022 - Virtual Training
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input name="oneAnswer" class="KSAT-select-option form-check-input bg-secondary" type="radio"
+                            value="August 17 - 18, 2022 - Virtual Training" id="option4">
+                        <label class="form-check-label" for="option4">
+                            August 17 - 18, 2022 - Virtual Training
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input name="oneAnswer" class="KSAT-select-option form-check-input bg-secondary" type="radio"
+                            value="October 4 - 5, 2022 - Virtual Training" id="option5">
+                        <label class="form-check-label" for="option5">
+                            October 4 - 5, 2022 - Virtual Training
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input name="oneAnswer" class="KSAT-select-option form-check-input bg-secondary" type="radio"
+                            value="Waitlist for the next available course." id="option7">
+                        <label class="form-check-label" for="option7">
+                            Waitlist for the next available course.
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input name="oneAnswer" class="KSAT-select-option form-check-input bg-secondary" type="radio"
+                            value="custom" id="option8">
+                        <label class="form-check-label" for="option8">
+                            Has a quote been provided and approved by the CU?
+                            If so, please specify the course dates that have been agreed upon
+                            as well as the location.
+                            Otherwise please reach out to TechnicalTraining@CorelationInc.com
+                            if you are interested in custom training.
+                        </label>
+                        <input id="KSAT-custom-text" type="text" aria-label="custom-input" class="form-control">
+                    </div>
+                </div>
+                <!--todo hard coding the dates for now, will add in dynamically later with confluence API -->
+
+
+                <br>
+                <h4 class="text-primary">
+                    6. Do you perform back-office operations (database backups, File Transfers, etc.)?
+                </h4>
+                <select id="KSAT-backOffice" class="form-select">
+                    <option selected>select. . .</option>
+                    <option value="Yes">Yes</option>
+                    <option value="No">No</option>
+                </select>
+                <br>
+                <h4 class="text-primary">
+                    7. Do you currently have AIX credentials?
+                </h4>
+                <select id="KSAT-aixCreds" class="form-select">
+                    <option selected>select. . .</option>
+                    <option value="Yes">Yes</option>
+                    <option value="No">No</option>
+                </select>
+
+                <br>
+                <h4 class="text-primary">
+                    8. What is your level of AIX experience?
+                </h4>
+                <select id="KSAT-aixExp" class="form-select">
+                    <option selected>select. . .</option>
+                    <option value="None">None</option>
+                    <option value="Somewhat">Somewhat</option>
+                    <option value="Experienced">Experienced</option>
+                </select>
+
+                <br>
+                <h4 class="text-primary">
+                    9. Does your CU use WRG, Switchthink or AFS?
+                </h4>
+                <select id="KSAT-vpnClient" class="form-select">
+                    <option selected>select. . .</option>
+                    <option value="WRG">WRG</option>
+                    <option value="Switchthink">Switchthink</option>
+                    <option value="AFS">AFS</option>
+                    <option value="None of these">None of these</option>
+                </select>
+            
+                <br>
+                <h4 class="text-primary">
+                    10. What is your level of experience using the KeyStone Administration menu?
+                </h4>
+                <select id="KSAT-adminExp" class="form-select">
+                    <option selected>select. . .</option>
+                    <option value="None">None</option>
+                    <option value="Somewhat">Somewhat</option>
+                    <option value="Experienced">Experienced</option>
+                </select>
+
+                <br>
+                <h4 class="text-primary">
+                    11. Do you have experience using PuTTY?
+                </h4>
+                <select id="KSAT-puttyExp" class="form-select">
+                    <option selected>select. . .</option>
+                    <option value="Yes">Yes</option>
+                    <option value="No">No</option>
+                </select>
+
+                <br>
+                <h4 class="text-primary">
+                    12. Have you generated or installed a web certificate?
+                </h4>
+                <select id="KSAT-webCertificate" class="form-select">
+                    <option selected>select. . .</option>
+                    <option value="Yes">Yes</option>
+                    <option value="No">No</option>
+                </select>
+
+
+
+
             <!-- final questions will appear here.. -->
             <!-- loader that appears before the finalquestion are ready -->
             <!-- the list of final questions -->
