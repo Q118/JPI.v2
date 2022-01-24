@@ -2,24 +2,34 @@
 
 //variables that will start out hidden
 const BJRTsection = $("#BJRT-section");
+const AJRTsection = $("#AJRT-section");
 const nextLoader = $("#next-loader");
 
 const finalSection = $("#final-section");
 
+let currentSectionSelection;
 //function to look at whats selected and display the correct section based off that
-// function displaySection(selection, section, loader) {
-//     // if the selection.toString is equal to the sections class attribute
-//     if (selection.toString() === section.attr("class")) {
-//         section.show();
-//         loader.hide();
-//     }
-// }
+function displaySection(selection, section, loader) {
+    // if the selection.toString is equal to the sections class attribute
+    if (selection.toString() === section.attr("class")) {
+        section.show();
+        loader.hide();
+        currentSectionSelection = section;
+    } else {
+        section.hide();
+        loader.show(); // if user changes, the display will change
+    }
+}
 // todo: the above function needs help.. it works but need to differentiate the sections
 
+// array of sections for manipulating their display
+const sections = [BJRTsection, AJRTsection, finalSection];
 
 $(() => {
     //disable the next section until the user has selected class
     BJRTsection.hide();
+    AJRTsection.hide();
+
     //disable the final section until the user has finished the 'next' section
     //finalSection.hide();
 
@@ -50,15 +60,16 @@ $(() => {
         console.log(bjrtDateInput);
     });
 
-
+    
     // once classSelect is selected, enable the BJRTsection to be visible
     classSelect.on("change", () => {
         //if the user selects the BJRT option
-        if (classSelect.val() === "Beginner Jaspersoft Reports Training") {
-            BJRTsection.show();
-            nextLoader.hide();
-        }
-        //displaySection(classSelect.val(), BJRTsection, nextLoader);
+        // if (classSelect.val() === "Beginner Jaspersoft Reports Training") {
+        //     BJRTsection.show();
+        //     nextLoader.hide();
+        // }
+        displaySection(classSelect.val(), BJRTsection, nextLoader);
+        displaySection(classSelect.val(), AJRTsection, nextLoader);
         // repeat above for each section and it will work
         //! put all sections and do a forEACH to send them all through displaySection
     });

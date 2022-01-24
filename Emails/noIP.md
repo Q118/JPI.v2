@@ -18,3 +18,4 @@ In order to provide the best possible training experience, Corelation Technical 
 To read our complete Terms and Conditions, click here.
 This training is hands-on and requires attendee participation. Training will be conducted from 9am – 12pm PST and office hours will be held each day from 1–2pm PST.  More information to come regarding computer configuration needed for the virtual training, course materials, and Webex invitations.
 Please let me know if you have any questions in the meantime. A reminder will be sent to attendees the week prior to training. Thank you,
+

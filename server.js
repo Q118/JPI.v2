@@ -16,6 +16,16 @@ app.get("/", (req, res) => {
     res.render("index");
 });
 
+//posssible logic for validating the IP
+// var http = require('http');
+
+// http.get({'host': 'api.ipify.org', 'port': 80, 'path': '/'}, function(resp) {
+//   resp.on('data', function(ip) {
+//     console.log("My public IP address is: " + ip);
+//   });
+// });
+
+
 //variable to hold the description of the ticket that exists
 let ticketDescription; // we need this to save and then append to it the next section of info
 let issueName; //also need the title for the same reason
