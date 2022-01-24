@@ -4,6 +4,7 @@
 const BJRTsection = $("#BJRT-section");
 const AJRTsection = $("#AJRT-section");
 const UISTsection = $("#UIST-section");
+const BSTsection = $("#BST-section");
 const nextLoader = $("#next-loader");
 
 
@@ -18,9 +19,11 @@ function displaySection(selection, section, loader) {
         section.show();
         loader.hide();
         // currentSectionSelection = section;
-    } else {
+    } else if (selection.toString() === "select. . .") {
         section.hide();
         loader.show(); // if user changes, the display will change
+    } else {
+        section.hide();
     }
 }
 // todo: the above function needs help.. it works but need to differentiate the sections
@@ -29,11 +32,11 @@ function displaySection(selection, section, loader) {
 const sections = [BJRTsection, AJRTsection, finalSection];
 
 $(() => {
-    //disable the next section until the user has selected class
+    //disable the 'next' sections until the user has selected class
     BJRTsection.hide();
     AJRTsection.hide();
     UISTsection.hide();
-
+    BSTsection.hide();
     //disable the final section until the user has finished the 'next' section
     //finalSection.hide();
 
@@ -64,17 +67,14 @@ $(() => {
         console.log(bjrtDateInput);
     });
 
-    
+
     // once classSelect is selected, enable the BJRTsection to be visible
     classSelect.on("change", () => {
-        //if the user selects the BJRT option
-        // if (classSelect.val() === "Beginner Jaspersoft Reports Training") {
-        //     BJRTsection.show();
-        //     nextLoader.hide();
-        // }
+        //display the section based o user-selected class:
         displaySection(classSelect.val(), BJRTsection, nextLoader);
         displaySection(classSelect.val(), AJRTsection, nextLoader);
         displaySection(classSelect.val(), UISTsection, nextLoader);
+        displaySection(classSelect.val(), BSTsection, nextLoader);
         // repeat above for each section and it will work
         //! put all sections in [] and do a forEACH to send them all through displaySection
     });

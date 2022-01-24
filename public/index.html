@@ -117,7 +117,7 @@
             <br>
 
 
-
+            <!-- loader to be visible only when no class-selection is made yet -->
             <div id="next-loader" class="text-center text-info mt-3">
                 <strong>Follow Up questions will appear here. . . </strong>
                 <div class="spinner-border" role="status"></div>
@@ -368,7 +368,7 @@
 
                 <br>
                 <h4 class="text-primary">
-                    8. Do you have working knowledge of Beatrice?
+                    9. Do you have working knowledge of Beatrice?
                 </h4>
                 <select id="AJRT-beatrice" class="form-select">
                     <option selected>select. . .</option>
@@ -491,7 +491,7 @@
 
                 <br>
                 <h4 class="text-primary">
-                    8. Have you ever coded a program?
+                    9. Have you ever coded a program?
                 </h4>
                 <select id="UIST-codeProgram" class="form-select">
                     <option selected>select. . .</option>
@@ -521,7 +521,7 @@
 
                 <br>
                 <h4 class="text-primary">
-                    8. Have you ever created a basic web page?
+                    11. Have you ever created a basic web page?
                 </h4>
                 <select id="UIST-webPage" class="form-select">
                     <option selected>select. . .</option>
@@ -536,9 +536,151 @@
                 </div>
             </div>
 
+            <!-- BST SECTION -->
+            <div id="BST-section" class="Batch Scripting Training">
+
+                <p>The Batch Scripting training provides you with the tools and information needed to broaden KeyStone
+                    functionality for your specific needs. Batch script training will enable you to write batch programs
+                    to update your database (e.g., courtesy pay limits or relationship levels), post monetary
+                    transactions (e.g., custom fees), and output reports (e.g., CSV or PDF).</p>
+                <div id="BST-select-group">
+                    <h4 class="text-primary">
+                        * 5. Please Select a Batch Scripting Training Course Date:
+                    </h4>
+                    <!--todo hard coding the datwes for now, will add in dynamically later with confluence API -->
+                    <div class="form-check">
+                        <input name="oneAnswer" class="BST-select-option form-check-input bg-secondary" type="radio"
+                            value="February 22 - 24, 2022 - Virtual Training" id="option1">
+                        <label class="form-check-label" for="option1">
+                            February 22 - 24, 2022 - Virtual Training
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input name="oneAnswer" class="BST-select-option form-check-input bg-secondary" type="radio"
+                            value="April 19 - 21, 2022 - Virtual Training" id="option2">
+                        <label class="form-check-label" for="option2">
+                            April 19 - 21, 2022 - Virtual Training
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input name="oneAnswer" class="BST-select-option form-check-input bg-secondary" type="radio"
+                            value="June 7 - 9, 2022 - Virtual Training" id="option3">
+                        <label class="form-check-label" for="option3">
+                            June 7 - 9, 2022 - Virtual Training
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input name="oneAnswer" class="BST-select-option form-check-input bg-secondary" type="radio"
+                            value="September 13 - 15, 2022 - Virtual Training" id="option4">
+                        <label class="form-check-label" for="option4">
+                            September 13 - 15, 2022 - Virtual Training
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input name="oneAnswer" class="BST-select-option form-check-input bg-secondary" type="radio"
+                            value="October 25 - 27, 2022 - Virtual Training" id="option5">
+                        <label class="form-check-label" for="option5">
+                            October 25 - 27, 2022 - Virtual Training
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input name="oneAnswer" class="BST-select-option form-check-input bg-secondary" type="radio"
+                            value="December 13 - 15, 2022 - Virtual Training" id="option6">
+                        <label class="form-check-label" for="option6">
+                            December 13 - 15, 2022 - Virtual Training
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input name="oneAnswer" class="BST-select-option form-check-input bg-secondary" type="radio"
+                            value="Waitlist for the next available course." id="option7">
+                        <label class="form-check-label" for="option7">
+                            Waitlist for the next available course.
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input name="oneAnswer" class="BST-select-option form-check-input bg-secondary" type="radio"
+                            value="custom" id="option8">
+                        <label class="form-check-label" for="option8">
+                            Has a quote been provided and approved by the CU?
+                            If so, please specify the course dates that have been agreed upon
+                            as well as the location.
+                            Otherwise please reach out to TechnicalTraining@CorelationInc.com
+                            if you are interested in custom training.
+                        </label>
+                        <input id="BST-custom-text" type="text" aria-label="custom-input" class="form-control">
+                    </div>
+                </div>
+                <!--todo hard coding the dates for now, will add in dynamically later with confluence API -->
 
 
-            <!-- final questions will appear jhere.. -->
+                <br>
+                <h4 class="text-primary">
+                    6. Are you familiar with KeyStone's tables and fields?
+                </h4>
+                <select id="BST-tf" class="form-select">
+                    <option selected>select. . .</option>
+                    <option value="Yes">Yes</option>
+                    <option value="No">No</option>
+                </select>
+
+                <br>
+                <h4 class="text-primary">
+                    7. Have you ever setup and run a batch script in KeyStone?
+                </h4>
+                <select id="BST-script" class="form-select">
+                    <option selected>select. . .</option>
+                    <option value="I have setup a batch script">I have setup a batch script</option>
+                    <option value="I have run a batch script">I have run a batch script</option>
+                    <option value="I have setup and run a batch script">I have setup and run a batch
+                        script</option>
+                    <option value="I have not">I have not</option>
+                </select>
+
+                <br>
+                <h4 class="text-primary">
+                    8. Do you have Java programming experience?
+                </h4>
+                <select id="BST-javaExp" class="form-select">
+                    <option selected>select. . .</option>
+                    <option value="Yes">Yes</option>
+                    <option value="No">No</option>
+                </select>
+
+                <br>
+                <h4 class="text-primary">
+                    9. Have you ever taken a programming class?
+                </h4>
+                <select id="BST-programClass" class="form-select">
+                    <option selected>select. . .</option>
+                    <option value="Yes">Yes</option>
+                    <option value="No">No</option>
+                </select>
+                <div class="input-group mb-3 mt-1">
+                    <span class="input-group-text" id="BST-listClasses">If yes, please list <br> the classes
+                        you've taken:</span>
+                    <input type="text" class="form-control" placeholder="programming classes..."
+                        aria-label="custom-input" aria-describedby="BST-listClasses">
+                </div>
+
+                <br>
+                <h4 class="text-primary">
+                    10. Have you ever coded a program?
+                </h4>
+                <select id="BST-codeProgram" class="form-select">
+                    <option selected>select. . .</option>
+                    <option value="Yes">Yes</option>
+                    <option value="No">No</option>
+                </select>
+                <div class="input-group mb-3 mt-1">
+                    <span class="input-group-text" id="BST-codeLanguage">If yes, please specify the <br> programming
+                        language(s) used:</span>
+                    <input type="text" class="form-control" placeholder="programming languages..."
+                        aria-label="custom-input" aria-describedby="BST-codeLanguage">
+                </div>
+            </div>
+
+
+            <!-- final questions will appear here.. -->
             <!-- loader that appears before the finalquestion are ready -->
             <!-- the list of final questions -->
             <div class="text-center mt-2">
