@@ -7,6 +7,7 @@ const UISTsection = $("#UIST-section");
 const BSTsection = $("#BST-section");
 const SQLsection = $("#SQL-section");
 const KSATsection = $("#KSAT-section");
+const KBTsection = $("#KBT-section");
 
 const finalSection = $("#final-section");
 //loader to display only when user has no class selected
@@ -23,7 +24,8 @@ const sections = [BJRTsection,
     finalSection,
     SQLsection,
     BSTsection,
-    KSATsection
+    KSATsection,
+    KBTsection
 ];
 
 // let currentSectionSelection;
@@ -79,6 +81,7 @@ $(() => {
     //BJRT variables
     const bjrtDateGroup = $("div#BJRT-select-group");
     let bjrtDateInput;
+    // todo: implement arrays of elements to do stuff like below in forEach way.
     bjrtDateGroup.on("change", () => {
         bjrtDateInput = document.querySelector('input[name="oneAnswer"]:checked').value;
         console.log(bjrtDateInput);

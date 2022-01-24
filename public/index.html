@@ -251,7 +251,7 @@
                 </select>
                 <div class="input-group mb-3 mt-1">
                     <span class="input-group-text" id="basic-addon1">If yes, please specify:</span>
-                    <input type="text" class="form-control" placeholder="no coding experience" aria-label="Username"
+                    <input type="text" class="form-control" placeholder="no coding experience" aria-label="custom-input"
                         aria-describedby="basic-addon1">
                 </div>
 
@@ -388,7 +388,7 @@
                 </select>
                 <div class="input-group mb-3 mt-1">
                     <span class="input-group-text" id="basic-addon1">If yes, please specify:</span>
-                    <input type="text" class="form-control" placeholder="no coding experience" aria-label="Username"
+                    <input type="text" class="form-control" placeholder="no coding experience" aria-label="custom-input
                         aria-describedby="basic-addon1">
                 </div>
 
@@ -716,7 +716,6 @@
 
             <!-- KSAT SECTION-->
             <div id="KSAT-section" class="KeyStone Server Administration Training">
-
                 <p>The KeyStone Server Administration training provides in-depth instruction on the KeyStone AIX
                     Administration Menu, daily operations, and system monitoring. It covers database backups, purges,
                     HARD administration, and other backend server maintenance routines needed to keep KeyStone running
@@ -825,7 +824,7 @@
                     <option value="AFS">AFS</option>
                     <option value="None of these">None of these</option>
                 </select>
-            
+
                 <br>
                 <h4 class="text-primary">
                     10. What is your level of experience using the KeyStone Administration menu?
@@ -856,9 +855,156 @@
                     <option value="Yes">Yes</option>
                     <option value="No">No</option>
                 </select>
+            </div>
+
+            <!-- KBT section -->
+            <div id="KBT-section" class="KeyBridge Training">
+                <p>The KeyBridge training provides in-depth instruction on Corelation's KeyBridge API. KeyBridge exposes
+                    the KeyStone database to third-party interfaces to initiate one or a combination of the following
+                    queries: inquiries, file maintenance, and monetary postings. This course focuses on how the KeyStone
+                    user interface and third-party KeyBridge interfaces use KeyBridge in the core integration process.
+                    Topics of discussion include details about the Query Server Message Flow, the request-response
+                    message model, best practices, implementing a KeyBridge interface, and troubleshooting KeyBridge API
+                    issues</p>
+                <div id="KBT-select-group">
+                    <h4 class="text-primary">
+                        * 5. Please Select a KeyBridge Training Course Date:
+                    </h4>
+                    <!--todo hard coding the datwes for now, will add in dynamically later with confluence API -->
+                    <div class="form-check">
+                        <input name="oneAnswer" class="KBT-select-option form-check-input bg-secondary" type="radio"
+                            value="February 16 - 17, 2022 - Virtual Training" id="option1">
+                        <label class="form-check-label" for="option1">
+                            February 16 - 17, 2022 - Virtual Training
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input name="oneAnswer" class="KBT-select-option form-check-input bg-secondary" type="radio"
+                            value="April 6 - 7, 2022 - Virtual Training" id="option2">
+                        <label class="form-check-label" for="option2">
+                            April 6 - 7, 2022 - Virtual Training
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input name="oneAnswer" class="KBT-select-option form-check-input bg-secondary" type="radio"
+                            value="June 29 - 30, 2022 - Virtual Training" id="option3">
+                        <label class="form-check-label" for="option3">
+                            June 29 - 30, 2022 - Virtual Training
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input name="oneAnswer" class="KBT-select-option form-check-input bg-secondary" type="radio"
+                            value="July 20 - 21, 2022 - Virtual Training" id="option4">
+                        <label class="form-check-label" for="option4">
+                            July 20 - 21, 2022 - Virtual Training
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input name="oneAnswer" class="KBT-select-option form-check-input bg-secondary" type="radio"
+                            value="September 7 - 8, 2022 - Virtual Training" id="option5">
+                        <label class="form-check-label" for="option5">
+                            September 7 - 8, 2022 - Virtual Training
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input name="oneAnswer" class="KBT-select-option form-check-input bg-secondary" type="radio"
+                            value="October 12 - 13, 2022 - Virtual Training" id="option5">
+                        <label class="form-check-label" for="option5">
+                            October 12 - 13, 2022 - Virtual Training
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input name="oneAnswer" class="KBT-select-option form-check-input bg-secondary" type="radio"
+                            value="November 29 - 30, 2022 - Virtual Training" id="option5">
+                        <label class="form-check-label" for="option5">
+                            November 29 - 30, 2022 - Virtual Training
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input name="oneAnswer" class="KBT-select-option form-check-input bg-secondary" type="radio"
+                            value="Waitlist for the next available course." id="option7">
+                        <label class="form-check-label" for="option7">
+                            Waitlist for the next available course.
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input name="oneAnswer" class="KBT-select-option form-check-input bg-secondary" type="radio"
+                            value="custom" id="option8">
+                        <label class="form-check-label" for="option8">
+                            Has a quote been provided and approved by the CU?
+                            If so, please specify the course dates that have been agreed upon
+                            as well as the location.
+                            Otherwise please reach out to TechnicalTraining@CorelationInc.com
+                            if you are interested in custom training.
+                        </label>
+                        <input id="KBT-custom-text" type="text" aria-label="custom-input" class="form-control">
+                    </div>
+                </div>
+                <!--todo hard coding the dates for now, will add in dynamically later with confluence API -->
 
 
+                <br>
+                <h4 class="text-primary">
+                    6. Do you have prior experience with XML?
+                </h4>
+                <select id="KBT-xmlExp" class="form-select">
+                    <option selected>select. . .</option>
+                    <option value="Yes">Yes</option>
+                    <option value="No">No</option>
+                </select>
+                <br>
+                <h4 class="text-primary">
+                    7. Have you reviewed, or will you review prior to attending training, the first 20 pages of the
+                    Query Language XML Interface document?
+                </h4>
+                <select id="KBT-reviewSpecs" class="form-select">
+                    <option selected>select. . .</option>
+                    <option value="Yes">Yes</option>
+                    <option value="No">No</option>
+                </select>
 
+                <br>
+                <h4 class="text-primary">
+                    8. Have you build a UI or Batch script for KeyStone??
+                </h4>
+                <select id="KBT-script" class="form-select">
+                    <option selected>select. . .</option>
+                    <option value="None">I have built a UI script.</option>
+                    <option value="Somewhat">I have built a batch script.</option>
+                    <option value="Somewhat">I have built both, a UI script and batch script.</option>
+                    <option value="Experienced">I have not built either.</option>
+                </select>
+
+                <br>
+                <h4 class="text-primary">
+                    9. Are you interested in taking this course to build a KeyBridge interface or script that interacts
+                    with KeyStone, or are you looking to learn more about what KeyBridge has to offer?
+                </h4>
+                <select id="KBT-why" class="form-select">
+                    <option selected>select. . .</option>
+                    <option value="WRG">I am looking to build a KeyBridge interface.</option>
+                    <option value="Switchthink">I am looking to build scripts.</option>
+                    <option value="AFS">I am looking to learn more about KeyBridge.</option>
+                    <option value="None of these">Other</option>
+                </select>
+                <div class="input-group mb-3 mt-1">
+                    <span class="input-group-text" id="basic-addon1">*If other, please specify:</span>
+                    <input id="KBT-whyCustom" type="text" class="form-control" placeholder="other reasons for taking..." aria-label="custom-input"
+                        aria-describedby="basic-addon1">
+                </div>
+
+
+                <br>
+                <h4 class="text-primary">
+                    10. Do you have experience with using an API??
+                </h4>
+                <select id="KBT-apiExp" class="form-select">
+                    <option selected>select. . .</option>
+                    <option value="None">Yes</option>
+                    <option value="Somewhat">Somewhat</option>
+                    <option value="Experienced">No</option>
+                </select>
+            </div>
 
             <!-- final questions will appear here.. -->
             <!-- loader that appears before the finalquestion are ready -->
