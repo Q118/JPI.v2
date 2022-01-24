@@ -5,11 +5,18 @@ const BJRTsection = $("#BJRT-section");
 const AJRTsection = $("#AJRT-section");
 const UISTsection = $("#UIST-section");
 const BSTsection = $("#BST-section");
+const SQLsection = $("#SQL-section");
+
+const finalSection = $("#final-section");
+//loader to display only when user has no class selected
 const nextLoader = $("#next-loader");
 
 
 
-const finalSection = $("#final-section");
+
+
+// array of sections for manipulating their display
+const sections = [BJRTsection, AJRTsection, UISTsection, finalSection, SQLsection, BSTsection];
 
 // let currentSectionSelection;
 //function to look at whats selected and display the correct section based off that
@@ -28,15 +35,17 @@ function displaySection(selection, section, loader) {
 }
 // todo: the above function needs help.. it works but need to differentiate the sections
 
-// array of sections for manipulating their display
-const sections = [BJRTsection, AJRTsection, finalSection];
+
 
 $(() => {
     //disable the 'next' sections until the user has selected class
-    BJRTsection.hide();
-    AJRTsection.hide();
-    UISTsection.hide();
-    BSTsection.hide();
+    // BJRTsection.hide();
+    // AJRTsection.hide();
+    // UISTsection.hide();
+    // BSTsection.hide();
+    sections.forEach(section => {
+        section.hide()
+    })
     //disable the final section until the user has finished the 'next' section
     //finalSection.hide();
 
@@ -75,6 +84,7 @@ $(() => {
         displaySection(classSelect.val(), AJRTsection, nextLoader);
         displaySection(classSelect.val(), UISTsection, nextLoader);
         displaySection(classSelect.val(), BSTsection, nextLoader);
+        displaySection(classSelect.val(), SQLsection, nextLoader);
         // repeat above for each section and it will work
         //! put all sections in [] and do a forEACH to send them all through displaySection
     });

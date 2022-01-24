@@ -679,6 +679,40 @@
                 </div>
             </div>
 
+            <!-- SQL SECTION -->
+            <div id="SQL-section" class="SQL Fundamentals Video Training">
+                <p>
+                    The SQL Fundamentals course provides in-depth instruction on building SQL queries against the
+                    KeyStone database. This hands-on, go at your own pace course covers over 5 hours worth of material
+                    to get you building SQL queries against the KeyStone database quickly!
+                </p>
+
+                <div id="SQL-select-group">
+                    <h4 class="text-primary">
+                        * 5. To complete your registration, you agree to the following terms and conditions:
+                    </h4>
+                    <!--todo hard coding the datwes for now, will add in dynamically later with confluence API -->
+                    <div class="form-check">
+                        <input name="oneAnswer" class="SQL-select-option form-check-input bg-secondary" type="checkbox"
+                            value="termOne" id="termOne">
+                        <label class="form-check-label" for="termOne">
+                            *The course recordings are only granted for your credit union to use. You agree not to share
+                            it with other credit unions, distribute it outside your credit union, or sell it in any way.
+                            Refer to the confidentiality statement on the SQL Fundamentals Training page for more
+                            information.
+                        </label>
+                    </div>
+                    <!-- todo: add validation to make both check boxes mandatory -->
+                    <div class="form-check">
+                        <input name="oneAnswer" class="SQL-select-option form-check-input bg-secondary" type="checkbox"
+                            value="termTwo" id="termTwo">
+                        <label class="form-check-label" for="termTwo">
+                            *Once the course has been billed, your Credit Union Confluence user will gain access to the
+                            Confluence page containing the course videos and practice exercises
+                        </label>
+                    </div>
+                </div>
+            </div>
 
             <!-- final questions will appear here.. -->
             <!-- loader that appears before the finalquestion are ready -->
@@ -687,6 +721,9 @@
                 <!-- todo: add validation to stop submitting if one of the required fields are not filled out -->
                 <button type="submit" class="btn btn-secondary btn-lg">Submit</button>
             </div>
+
+
+
 
 
 
