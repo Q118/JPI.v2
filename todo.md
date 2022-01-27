@@ -16,5 +16,5 @@ if yes
 perhaps put all answers to the OPTIONAL questions on to a pdf (like tt-173) and attach that to the ticket?
 
 put similar items into array for manipulation of them
-
+    dom items*
 

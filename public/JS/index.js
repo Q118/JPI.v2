@@ -1,5 +1,3 @@
-//main functions for the index page
-
 //variables that will start out hidden
 const BJRTsection = $("#BJRT-section");
 const AJRTsection = $("#AJRT-section");
@@ -8,6 +6,7 @@ const BSTsection = $("#BST-section");
 const SQLsection = $("#SQL-section");
 const KSATsection = $("#KSAT-section");
 const KBTsection = $("#KBT-section");
+const FGUsection = $("#FGU-section");
 
 const finalSection = $("#final-section");
 //loader to display only when user has no class selected
@@ -25,7 +24,8 @@ const sections = [BJRTsection,
     SQLsection,
     BSTsection,
     KSATsection,
-    KBTsection
+    KBTsection,
+    FGUsection
 ];
 
 // let currentSectionSelection;
@@ -35,7 +35,10 @@ function displaySection(selection, section, loader) {
     if (selection.toString() === section.attr("class")) {
         section.show();
         loader.hide();
-        // currentSectionSelection = section;
+        let sectionTitle = $(".sectionTitle");
+//change text of sectionTitle to be the name of the section
+        sectionTitle.text(selection);
+
     } else if (selection.toString() === "select. . .") {
         section.hide();
         loader.show(); // if user changes, the display will change
