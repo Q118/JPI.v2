@@ -7,6 +7,7 @@ const SQLsection = $("#SQL-section");
 const KSATsection = $("#KSAT-section");
 const KBTsection = $("#KBT-section");
 const FGUsection = $("#FGU-section");
+const FUIsection = $("#FUI-section");
 
 const finalSection = $("#final-section");
 //loader to display only when user has no class selected
@@ -25,7 +26,8 @@ const sections = [BJRTsection,
     BSTsection,
     KSATsection,
     KBTsection,
-    FGUsection
+    FGUsection,
+    FUIsection
 ];
 
 // let currentSectionSelection;

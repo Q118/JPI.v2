@@ -972,7 +972,7 @@
 
                 <br>
                 <h4 class="text-primary">
-                    8. Have you build a UI or Batch script for KeyStone??
+                    8. Have you build a UI or Batch script for KeyStone?
                 </h4>
                 <select id="KBT-script" class="form-select">
                     <option selected>select. . .</option>
@@ -1003,7 +1003,7 @@
 
                 <br>
                 <h4 class="text-primary">
-                    10. Do you have experience with using an API??
+                    10. Do you have experience with using an API?
                 </h4>
                 <select id="KBT-apiExp" class="form-select">
                     <option selected>select. . .</option>
@@ -1036,7 +1036,7 @@
                     </div>
                     <div class="form-check">
                         <input name="oneAnswer" class="FGU-select-option form-check-input bg-secondary" type="radio"
-                            value="May 10, 2022 - Virtual Training id=" option2">
+                            value="May 10, 2022 - Virtual Training" id="option2">
                         <label class="form-check-label" for="option2">
                             May 10, 2022 - Virtual Training
                         </label>
@@ -1089,7 +1089,8 @@
                     <option selected>select. . .</option>
                     <option value="Yes">Yes</option>
                     <option value="No">No</option>
-                    <option value="I was not involved in the forms mapping process during conversion.">I was not involved in the forms mapping process during conversion.</option>
+                    <option value="I was not involved in the forms mapping process during conversion.">I was not
+                        involved in the forms mapping process during conversion.</option>
                 </select>
 
                 <br>
@@ -1120,7 +1121,102 @@
                 <select id="FGU-adobe" class="form-select">
                     <option selected>select. . .</option>
                     <option value="None">Yes</option>
-                    <option value="Experienced">No</option>
+                    <option value="No">No</option>
+                </select>
+            </div>
+
+            <!-- FUI section -->
+            <div id="FUI-section" class="Forms with UI Scripting">
+                <h2 class="sectionTitle">PLACEHOLDER</h2>
+                <p>Forms with UI Scripting provides the knowledge needed to use UI scripting to run forms and customize
+                    field mapping. It will also review how to use UI scripting to map KeyStone fields outside of the
+                    standard Account and Application field mappings.</p>
+                <div id="FUI-select-group">
+                    <h4 class="text-primary">
+                        * 5. Please Select a Forms with UI Scripting Course Date:
+                    </h4>
+                    <!--todo hard coding the datwes for now, will add in dynamically later with confluence API -->
+                    <div class="form-check">
+                        <input name="oneAnswer" class="FUI-select-option form-check-input bg-secondary" type="radio"
+                            value="February 2 - 3, 2022 - Virtual Training" id="option1">
+                        <label class="form-check-label" for="option1">
+                            February 2 - 3, 2022 - Virtual Training
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input name="oneAnswer" class="FUI-select-option form-check-input bg-secondary" type="radio"
+                            value="May 11 - 12, 2022 - Virtual Training" id="option2">
+                        <label class="form-check-label" for="option2">
+                            May 11 - 12, 2022 - Virtual Training
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input name="oneAnswer" class="FUI-select-option form-check-input bg-secondary" type="radio"
+                            value="June 29 - 30, 2022 - Virtual Training" id="option3">
+                        <label class="form-check-label" for="option3">
+                            August 31 - September 1, 2022 - Virtual Training
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input name="oneAnswer" class="FUI-select-option form-check-input bg-secondary" type="radio"
+                            value="Waitlist for the next available course." id="option7">
+                        <label class="form-check-label" for="option7">
+                            Waitlist for the next available course.
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input name="oneAnswer" class="FUI-select-option form-check-input bg-secondary" type="radio"
+                            value="custom" id="option8">
+                        <label class="form-check-label" for="option8">
+                            Has a quote been provided and approved by the CU?
+                            If so, please specify the course dates that have been agreed upon
+                            as well as the location.
+                            Otherwise please reach out to TechnicalTraining@CorelationInc.com
+                            if you are interested in custom training.
+                        </label>
+                        <input id="FUI-custom-text" type="text" aria-label="custom-input" class="form-control">
+                    </div>
+                </div>
+                <!--todo hard coding the dates for now, will add in dynamically later with confluence API -->
+
+
+                <br>
+                <h4 class="text-primary">
+                    6. Will you have been through UI Scripting training prior to attending this course?
+                </h4>
+                <select id="FUI-UIscripting" class="form-select">
+                    <option selected>select. . .</option>
+                    <option value="Pre-Conversion">Yes</option>
+                    <option value="No">No</option>
+                </select>
+                <div class="input-group mb-3 mt-1">
+                    <span class="input-group-text" id="basic-addon1">If no, do you have prior <br>JavaScript experience
+                        and <br>
+                        have built UI scripts? <br> This course builds upon <br> the UI Scripting course.</span>
+                    <input id="FUI-customNoUI" type="text" class="form-control" placeholder="other experience..."
+                        aria-label="custom-input" aria-describedby="basic-addon1">
+                </div>
+
+
+                <br>
+                <h4 class="text-primary">
+                    7. Will you have been through Forms Training Part 1: General Usage or training with a Corelation
+                    Forms Analyst prior to attending this course?
+                </h4>
+                <select id="FUI-formTraining" class="form-select">
+                    <option selected>select. . .</option>
+                    <option value="Yes">Yes</option>
+                    <option value="No">No</option>
+                </select>
+
+                <br>
+                <h4 class="text-primary">
+                    8. Have you used Adobe Acrobat Pro DC?
+                </h4>
+                <select id="FUI-adobe" class="form-select">
+                    <option selected>select. . .</option>
+                    <option value="None">Yes</option>
+                    <option value="No">No</option>
                 </select>
             </div>
 
