@@ -8,13 +8,10 @@ const KSATsection = $("#KSAT-section");
 const KBTsection = $("#KBT-section");
 const FGUsection = $("#FGU-section");
 const FUIsection = $("#FUI-section");
-
+const FASsection = $("#FAS-section");
 const finalSection = $("#final-section");
 //loader to display only when user has no class selected
 const nextLoader = $("#next-loader");
-
-
-
 
 
 // array of sections for manipulating their display
@@ -27,7 +24,8 @@ const sections = [BJRTsection,
     KSATsection,
     KBTsection,
     FGUsection,
-    FUIsection
+    FUIsection,
+    FASsection
 ];
 
 // let currentSectionSelection;
@@ -38,9 +36,7 @@ function displaySection(selection, section, loader) {
         section.show();
         loader.hide();
         let sectionTitle = $(".sectionTitle");
-//change text of sectionTitle to be the name of the section
-        sectionTitle.text(selection);
-
+        sectionTitle.text(selection); //change text of sectionTitle to be the name of the section
     } else if (selection.toString() === "select. . .") {
         section.hide();
         loader.show(); // if user changes, the display will change
@@ -48,8 +44,6 @@ function displaySection(selection, section, loader) {
         section.hide();
     }
 }
-// todo: the above function needs help.. it works but need to differentiate the sections
-
 
 
 $(() => {

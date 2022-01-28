@@ -1221,6 +1221,95 @@
             </div>
 
 
+<!-- FAS section -->
+<div id="FAS-section" class="Fundamentals of Agile Scrum">
+    <h2 class="sectionTitle">PLACEHOLDER</h2>
+    <p>Forms with UI Scripting provides the knowledge needed to use UI scripting to run forms and customize
+        field mapping. It will also review how to use UI scripting to map KeyStone fields outside of the
+        standard Account and Application field mappings.</p>
+    <div id="FAS-select-group">
+        <h4 class="text-primary">
+            * 5. Please select a Fundamentals of Agile and Scrum course date.
+        </h4>
+        <!--todo hard coding the datwes for now, will add in dynamically later with confluence API -->
+        <div class="form-check">
+            <input name="oneAnswer" class="FAS-select-option form-check-input bg-secondary" type="radio"
+                value="February 16 - 17, 2022 - Virtual Training" id="option1">
+            <label class="form-check-label" for="option1">
+                February 16 - 17, 2022 - Virtual Training
+            </label>
+        </div>
+        <div class="form-check">
+            <input name="oneAnswer" class="FAS-select-option form-check-input bg-secondary" type="radio"
+                value="May 25 - 26, 2022 - Virtual Training" id="option2">
+            <label class="form-check-label" for="option2">
+                May 25 - 26, 2022 - Virtual Training
+            </label>
+        </div>
+        <div class="form-check">
+            <input name="oneAnswer" class="FAS-select-option form-check-input bg-secondary" type="radio"
+                value="September 7 - 8, 2022 - Virtual Training" id="option3">
+            <label class="form-check-label" for="option3">
+                September 7 - 8, 2022 - Virtual Training
+            </label>
+        </div>
+        <div class="form-check">
+            <input name="oneAnswer" class="FAS-select-option form-check-input bg-secondary" type="radio"
+                value="Waitlist for the next available course." id="option7">
+            <label class="form-check-label" for="option7">
+                Waitlist for the next available course.
+            </label>
+        </div>
+        <div class="form-check">
+            <input name="oneAnswer" class="FAS-select-option form-check-input bg-secondary" type="radio"
+                value="custom" id="option8">
+            <label class="form-check-label" for="option8">
+                Has a quote been provided and approved by the CU?
+                If so, please specify the course dates that have been agreed upon
+                as well as the location.
+                Otherwise please reach out to TechnicalTraining@CorelationInc.com
+                if you are interested in custom training.
+            </label>
+            <input id="FAS-custom-text" type="text" aria-label="custom-input" class="form-control">
+        </div>
+    </div>
+    <!--todo hard coding the dates for now, will add in dynamically later with confluence API -->
+
+
+    <br>
+    <h4 class="text-primary">
+        6. What is your role in your Credit Union?
+    </h4>
+    <div class="input-group mb-3 mt-1">
+        <input id="FAS-role" type="text" class="form-control" placeholder="my role is..."
+            aria-label="custom-input" aria-describedby="basic-addon1">
+    </div>
+
+
+    <br>
+    <h4 class="text-primary">
+        7. What is your level of experience or knowledge of Scrum and Agile principles?
+    </h4>
+    <select id="FAS-expLevel" class="form-select">
+        <option selected>select. . .</option>
+        <option value="No experience or knowledge at all">No experience or knowledge at all</option>
+        <option value="Some experience with these, but not a lot">Some experience with these, but not a lot</option>
+        <option value="Quite a bit of experience and knowledge">Quite a bit of experience and knowledge</option>
+    </select>
+
+    <br>
+    <h4 class="text-primary">
+        8. Does your Credit Union current use Agile and Scrum methodologies?
+    </h4>
+    <select id="FUI-adobe" class="form-select">
+        <option selected>select. . .</option>
+        <option value="Yes">Yes</option>
+        <option value="No">No</option>
+        <option value="I'm not sure">I'm not sure</option>
+    </select>
+</div>
+
+
             <!-- final questions will appear here.. -->
             <!-- loader that appears before the finalquestion are ready -->
             <!-- the list of final questions -->
