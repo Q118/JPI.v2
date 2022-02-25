@@ -70,16 +70,16 @@ $(() => {
 
     const dateSelectionGroup = $(".date-selection-all");
     //locate the first child of the dateSelectionGroup
-    let dateSelection; 
+    let dateSelection;
     dateSelectionGroup.on("change", () => {
         dateSelection = document.querySelector('input[name="oneAnswer"]:checked').value;
         // dateSelection = dateSelectionGroup.children().first();
         console.log(dateSelection);
     });
-    
-    
-    
-    
+
+
+
+
     //BJRT variables
     // const bjrtDateGroup = $("div#BJRT-select-group");
     // let bjrtDateInput;
@@ -98,7 +98,6 @@ $(() => {
             displaySection(classSelect.val(), section, nextLoader);
         })
     });
-
 
     questionForm.on("submit", (event) => {
         event.preventDefault();
