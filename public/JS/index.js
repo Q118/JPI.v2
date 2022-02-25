@@ -48,17 +48,9 @@ function displaySection(selection, section, loader) {
 
 $(() => {
     //disable the 'next' sections until the user has selected class
-    // BJRTsection.hide();
-    // AJRTsection.hide();
-    // UISTsection.hide();
-    // BSTsection.hide();
     sections.forEach(section => {
         section.hide()
     })
-    //disable the final section until the user has finished the 'next' section
-    //finalSection.hide();
-
-
     // get references to our form and inputs
     const questionForm = $("form.questionForm");
     const nameInput = $("input#name-input");

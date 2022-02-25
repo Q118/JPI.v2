@@ -9,7 +9,8 @@ app.use(express.urlencoded({ extended: true })); // Parse application body
 app.use(express.json());
 
 //todo also add the 'IP' and 'Notes' in the main description
-
+const dotenv = require('dotenv');
+dotenv.config()
 app.use(cors());
 
 app.get("/", (req, res) => {
@@ -17,6 +18,7 @@ app.get("/", (req, res) => {
 });
 
 const basicAuth = process.env.BASIC_AUTH;
+// authentication of base creds held in .env file
 
 //variable to hold the description of the ticket that exists
 let ticketDescription; // we need this to save and then append to it the next section of info
@@ -58,6 +60,7 @@ const checkTicketExistence = (summary) => {
             issueList.forEach(element => {
                 if (element?.fields?.summary === summary) {
                     console.log("ticket exists in scope of function!");
+                    console.log(summary)
                     ticketExistence = true;
                     ticketDescription = element?.fields?.description;
                     issueName = element?.key;
@@ -127,7 +130,7 @@ const sendTicket = (classSelect, attendeeName, cu, phone, email, priorAttendance
                             "comment": [
                                 {
                                     "add": {
-                                        "body": "This comment will hold additional info about the newly-registered attendee and it will tag a trainer to notify them of a new registration. This comment appears when the new ticket is created."
+                                        "body": `This comment will hold additional info about the newly-registered attendee (${attendeeName}) and it will tag a trainer to notify them of a new registration. This comment appears when the new ticket is created.`
                                     }
                                 }
                             ]
@@ -179,7 +182,7 @@ const updateTicket = (classSelect, attendeeName, cu, phone, email, priorAttendan
                     "comment": [
                         {
                             "add": {
-                                "body": "This comment will hold additional info about the new attendee and it will tag a trainer to notify them of a new registration."
+                                "body": `This comment will hold additional info about the new attendee  (${attendeeName})  and it will tag a trainer to notify them of a new registration.`
                             }
                         }
                     ]
