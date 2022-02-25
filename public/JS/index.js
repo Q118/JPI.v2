@@ -13,7 +13,6 @@ const finalSection = $("#final-section");
 //loader to display only when user has no class selected
 const nextLoader = $("#next-loader");
 
-
 // array of sections for manipulating their display
 const sections = [BJRTsection,
     AJRTsection,
@@ -28,7 +27,7 @@ const sections = [BJRTsection,
     FASsection
 ];
 
-// let currentSectionSelection;
+
 //function to look at whats selected and display the correct section based off that
 function displaySection(selection, section, loader) {
     // if the selection.toString is equal to the sections class attribute
@@ -69,14 +68,27 @@ $(() => {
     const supervisorPhoneInput = $("input#supervisor-phone-input");
     // const supervisorInfo = [supervisorNameInput, supervisorEmailInput, supervisorPhoneInput];
 
-    //BJRT variables
-    const bjrtDateGroup = $("div#BJRT-select-group");
-    let bjrtDateInput;
-    // todo: implement arrays of elements to do stuff like below in forEach way.
-    bjrtDateGroup.on("change", () => {
-        bjrtDateInput = document.querySelector('input[name="oneAnswer"]:checked').value;
-        console.log(bjrtDateInput);
+    const dateSelectionGroup = $(".date-selection-all");
+    //locate the first child of the dateSelectionGroup
+    let dateSelection; 
+    dateSelectionGroup.on("change", () => {
+        dateSelection = document.querySelector('input[name="oneAnswer"]:checked').value;
+        // dateSelection = dateSelectionGroup.children().first();
+        console.log(dateSelection);
     });
+    
+    
+    
+    
+    //BJRT variables
+    // const bjrtDateGroup = $("div#BJRT-select-group");
+    // let bjrtDateInput;
+    // todo: implement arrays of elements to do stuff like did for dates in forEach way.
+    // will need to do this for the rest of the answers to questions and those go into the comment.
+    // bjrtDateGroup.on("change", () => {
+    //     bjrtDateInput = document.querySelector('input[name="oneAnswer"]:checked').value;
+    //     console.log(bjrtDateInput);
+    // });
 
 
     // once classSelect is selected, enable the appropriate section to visible
@@ -88,12 +100,11 @@ $(() => {
     });
 
 
-
     questionForm.on("submit", (event) => {
         event.preventDefault();
         let classSelection = "";
         // this is to get the full title for the ticket-summary
-        classSelection = `${classSelect.val()} : ${bjrtDateInput ? bjrtDateInput : "No Date Selected"}`;
+        classSelection = `${classSelect.val()} : ${dateSelection ? dateSelection : "No Date Selected"}`;
         // console.log(classSelection); // debug
         if (personInfo.some(el => el.val() === "") || personInfo.some(el => el.val() === "select. . .")) {
             alert("please fill out all the required fields!")
@@ -117,6 +128,8 @@ $(() => {
                     console.log('Sent to server-side');
                 }
             });
+            alert("Ticket Submitted!");
+            window.location.href = "/";
         }
     })
 
