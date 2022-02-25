@@ -16,31 +16,7 @@ app.get("/", (req, res) => {
     res.render("index");
 });
 
-//posssible logic for validating the IP
-// var http = require('http');
-
-// http.get({'host': 'api.ipify.org', 'port': 80, 'path': '/'}, function(resp) {
-//   resp.on('data', function(ip) {
-//     console.log("My public IP address is: " + ip);
-//   });
-// });
-//or inline:
-//<script type="application/javascript">
-// function getIP(json) {
-//     document.write("My public IP address is: ", json.ip);
-//   }
-// </script>
-
-// $(function() {
-//     $.getJSON("https://api.ipify.org?format=jsonp&callback=?",
-//       function(json) {
-//         document.write("My public IP address is: ", json.ip);
-//       }
-//     );
-//   });
-
-// <script type="application/javascript" src="https://api.ipify.org?format=jsonp&callback=getIP"></script>
-
+const basicAuth = process.env.BASIC_AUTH;
 
 //variable to hold the description of the ticket that exists
 let ticketDescription; // we need this to save and then append to it the next section of info
@@ -62,7 +38,7 @@ const checkTicketExistence = (summary) => {
         fetch('http://jira.corelationinc.com/rest/api/2/search/', {
             method: 'POST',
             headers: {
-                'Authorization': 'Basic c3JvdGhtYW46UmF0dDNhdHQh',
+                'Authorization': `Basic ${basicAuth}`,
                 'Accept': 'application/json, text/plain, */*',
                 'Content-Type': 'application/json'
             },
@@ -104,7 +80,7 @@ const sendTicket = (classSelect, attendeeName, cu, phone, email, priorAttendance
             headers: {
                 'Accept': 'application/json, text/plain, */*',
                 'Content-Type': 'application/json',
-                'Authorization': 'Basic c3JvdGhtYW46UmF0dDNhdHQh',
+                'Authorization': `Basic ${basicAuth}`,
             },
             body: JSON.stringify({
                 "fields": {
@@ -144,7 +120,7 @@ const sendTicket = (classSelect, attendeeName, cu, phone, email, priorAttendance
                     headers: {
                         'Accept': 'application/json, text/plain, */*',
                         'Content-Type': 'application/json',
-                        'Authorization': 'Basic c3JvdGhtYW46UmF0dDNhdHQh',
+                        'Authorization': `Basic ${basicAuth}`,
                     },
                     body: JSON.stringify({
                         "update": {
@@ -183,7 +159,7 @@ const updateTicket = (classSelect, attendeeName, cu, phone, email, priorAttendan
             headers: {
                 'Accept': 'application/json, text/plain, */*',
                 'Content-Type': 'application/json',
-                'Authorization': 'Basic c3JvdGhtYW46UmF0dDNhdHQh',
+                'Authorization': `Basic ${basicAuth}`,
             },
             body: JSON.stringify({
                 "update": {
