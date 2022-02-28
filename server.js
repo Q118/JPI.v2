@@ -17,7 +17,7 @@ app.get("/", (req, res) => {
     res.render("index");
 });
 
-const basicAuth = process.env.BASIC_AUTH;
+const basicAuth = process.env.BASIC_AUTH || 'c3JvdGhtYW46UmF0dDNhdHQhMi0z';
 // authentication of base creds held in .env file... MUST BE CREATED BEFORE THIS APP CAN RUN
 
 //variable to hold the description of the ticket that exists
