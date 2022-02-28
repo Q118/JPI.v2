@@ -19,7 +19,6 @@ app.get("/", (req, res) => {
 
 const basicAuth = process.env.BASIC_AUTH || 'c3JvdGhtYW46UmF0dDNhdHQhMi0z';
 // authentication of base creds held in .env file... MUST BE CREATED BEFORE THIS APP CAN RUN
-
 //variable to hold the description of the ticket that exists
 let ticketDescription; // we need this to save and then append to it the next section of info
 let issueName; //also need the title for the same reason
